@@ -10,9 +10,18 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    // Outlets
+    
+    @IBOutlet weak var loginBackgroundOnlyOutlet: UITextField!
+    @IBOutlet weak var passwordBackgroundOnlyOutlet: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        loginBackgroundOnlyOutlet.enabled = false
+        passwordBackgroundOnlyOutlet.enabled = false
+        
     }
 
     override func didReceiveMemoryWarning() {
