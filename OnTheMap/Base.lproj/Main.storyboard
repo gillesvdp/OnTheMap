@@ -44,7 +44,7 @@
             </objects>
             <point key="canvasLocation" x="80" y="607"/>
         </scene>
-        <!--Item 1-->
+        <!--Map-->
         <scene sceneID="NDL-pX-4hW">
             <objects>
                 <viewController id="6jT-oy-M7G" customClass="StudentsMapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -58,7 +58,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="Rwz-xH-mi0"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" id="Rwz-xH-mi0"/>
                     <connections>
                         <segue destination="I0o-H9-qAA" kind="show" identifier="goToPostInformationViewController" id="90V-K2-U2x"/>
                     </connections>
@@ -67,7 +67,7 @@
             </objects>
             <point key="canvasLocation" x="1596" y="279"/>
         </scene>
-        <!--Item-->
+        <!--List-->
         <scene sceneID="IhJ-Kr-cp9">
             <objects>
                 <tableViewController id="La6-BJ-DS5" customClass="StudentsTableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -93,7 +93,7 @@
                             <outlet property="delegate" destination="La6-BJ-DS5" id="jmk-B3-ZfP"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="i4c-gD-eYz"/>
+                    <tabBarItem key="tabBarItem" title="List" image="list" id="i4c-gD-eYz"/>
                     <connections>
                         <segue destination="I0o-H9-qAA" kind="show" identifier="goToPostInformationViewController" id="s2c-6w-WDu"/>
                     </connections>
@@ -142,6 +142,10 @@
             <point key="canvasLocation" x="776" y="607"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="list" width="32" height="32"/>
+        <image name="map" width="32" height="32"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="90V-K2-U2x"/>
     </inferredMetricsTieBreakers>
