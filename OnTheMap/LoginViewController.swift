@@ -18,13 +18,28 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButtonOutlet: UIButton!
     @IBOutlet weak var signupButtonOutlet: UIButton!
     
+    // Constants and variables
+    let udacityAPI = UdacityAPI()
+    
     
     // Button Actions
     @IBAction func loginButtonPressed(sender: AnyObject) {
-        // Replace condition to actual successful login
-        if true {
-            performSegueWithIdentifier("loggedInSuccessfully", sender: nil)
-        }
+        
+        // Add checks to see if the textfields are empty or not
+        
+        udacityAPI.authenticate(emailUITextFieldOutlet.text!, password: passwordUITextFieldOutlet.text!,
+            completionHandler: {(success, errorString) -> Void in
+            
+                if success {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.performSegueWithIdentifier("loggedInSuccessfully", sender: nil)
+                    })
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        print(errorString)
+                    })
+                }
+        })
     }
     
     
