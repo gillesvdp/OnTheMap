@@ -21,7 +21,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // Button Actions
     @IBAction func loginButtonPressed(sender: AnyObject) {
-        
+        // Replace condition to actual successful login
+        if true {
+            performSegueWithIdentifier("loggedInSuccessfully", sender: nil)
+        }
     }
     
     

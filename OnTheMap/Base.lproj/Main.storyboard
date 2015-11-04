@@ -255,7 +255,13 @@
         <scene sceneID="LkL-Hg-JlS">
             <objects>
                 <tabBarController id="vHm-hJ-bZP" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="yvE-Mw-ZBt"/>
+                    <navigationItem key="navigationItem" id="yvE-Mw-ZBt">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="fKw-EY-tHX">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="presentation" id="cOl-38-xjn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Pdg-hq-Y3d">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
