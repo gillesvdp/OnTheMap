@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		980AF6CB1BEA2D2600E2775B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980AF6CA1BEA2D2600E2775B /* AppDelegate.swift */; };
-		980AF6CD1BEA2D2600E2775B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980AF6CC1BEA2D2600E2775B /* ViewController.swift */; };
+		980AF6CD1BEA2D2600E2775B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980AF6CC1BEA2D2600E2775B /* LoginViewController.swift */; };
 		980AF6D01BEA2D2600E2775B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 980AF6CE1BEA2D2600E2775B /* Main.storyboard */; };
 		980AF6D31BEA2D2600E2775B /* OnTheMap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 980AF6D11BEA2D2600E2775B /* OnTheMap.xcdatamodeld */; };
 		980AF6D51BEA2D2600E2775B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 980AF6D41BEA2D2600E2775B /* Assets.xcassets */; };
 		980AF6D81BEA2D2600E2775B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 980AF6D61BEA2D2600E2775B /* LaunchScreen.storyboard */; };
 		980AF6E31BEA2D2600E2775B /* OnTheMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980AF6E21BEA2D2600E2775B /* OnTheMapTests.swift */; };
 		980AF6EE1BEA2D2600E2775B /* OnTheMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980AF6ED1BEA2D2600E2775B /* OnTheMapUITests.swift */; };
+		980AF6FD1BEA313600E2775B /* StudentsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980AF6FC1BEA313600E2775B /* StudentsMapViewController.swift */; };
+		980AF6FF1BEA316100E2775B /* StudentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980AF6FE1BEA316100E2775B /* StudentsTableViewController.swift */; };
+		980AF7011BEA318100E2775B /* PostInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980AF7001BEA318100E2775B /* PostInformationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +40,7 @@
 /* Begin PBXFileReference section */
 		980AF6C71BEA2D2600E2775B /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		980AF6CA1BEA2D2600E2775B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		980AF6CC1BEA2D2600E2775B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		980AF6CC1BEA2D2600E2775B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		980AF6CF1BEA2D2600E2775B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		980AF6D21BEA2D2600E2775B /* OnTheMap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OnTheMap.xcdatamodel; sourceTree = "<group>"; };
 		980AF6D41BEA2D2600E2775B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +52,9 @@
 		980AF6E91BEA2D2600E2775B /* OnTheMapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnTheMapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		980AF6ED1BEA2D2600E2775B /* OnTheMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTheMapUITests.swift; sourceTree = "<group>"; };
 		980AF6EF1BEA2D2600E2775B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		980AF6FC1BEA313600E2775B /* StudentsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsMapViewController.swift; sourceTree = "<group>"; };
+		980AF6FE1BEA316100E2775B /* StudentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsTableViewController.swift; sourceTree = "<group>"; };
+		980AF7001BEA318100E2775B /* PostInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostInformationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +105,8 @@
 		980AF6C91BEA2D2600E2775B /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				980AF6FB1BEA311900E2775B /* ViewControllers */,
 				980AF6CA1BEA2D2600E2775B /* AppDelegate.swift */,
-				980AF6CC1BEA2D2600E2775B /* ViewController.swift */,
 				980AF6CE1BEA2D2600E2775B /* Main.storyboard */,
 				980AF6D41BEA2D2600E2775B /* Assets.xcassets */,
 				980AF6D61BEA2D2600E2775B /* LaunchScreen.storyboard */,
@@ -126,6 +132,17 @@
 				980AF6EF1BEA2D2600E2775B /* Info.plist */,
 			);
 			path = OnTheMapUITests;
+			sourceTree = "<group>";
+		};
+		980AF6FB1BEA311900E2775B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				980AF6CC1BEA2D2600E2775B /* LoginViewController.swift */,
+				980AF6FC1BEA313600E2775B /* StudentsMapViewController.swift */,
+				980AF6FE1BEA316100E2775B /* StudentsTableViewController.swift */,
+				980AF7001BEA318100E2775B /* PostInformationViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,8 +277,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				980AF6D31BEA2D2600E2775B /* OnTheMap.xcdatamodeld in Sources */,
-				980AF6CD1BEA2D2600E2775B /* ViewController.swift in Sources */,
+				980AF7011BEA318100E2775B /* PostInformationViewController.swift in Sources */,
+				980AF6CD1BEA2D2600E2775B /* LoginViewController.swift in Sources */,
 				980AF6CB1BEA2D2600E2775B /* AppDelegate.swift in Sources */,
+				980AF6FD1BEA313600E2775B /* StudentsMapViewController.swift in Sources */,
+				980AF6FF1BEA316100E2775B /* StudentsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

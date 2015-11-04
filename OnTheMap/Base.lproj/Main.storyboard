@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -47,7 +47,7 @@
         <!--Item 1-->
         <scene sceneID="NDL-pX-4hW">
             <objects>
-                <viewController id="6jT-oy-M7G" sceneMemberID="viewController">
+                <viewController id="6jT-oy-M7G" customClass="StudentsMapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rJB-fT-Tff"/>
                         <viewControllerLayoutGuide type="bottom" id="lZQ-G4-d9q"/>
@@ -60,7 +60,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="Rwz-xH-mi0"/>
                     <connections>
-                        <segue destination="I0o-H9-qAA" kind="show" id="90V-K2-U2x"/>
+                        <segue destination="I0o-H9-qAA" kind="show" identifier="goToPostInformationViewController" id="90V-K2-U2x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pfh-r3-R7W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -70,7 +70,7 @@
         <!--Item-->
         <scene sceneID="IhJ-Kr-cp9">
             <objects>
-                <tableViewController id="La6-BJ-DS5" sceneMemberID="viewController">
+                <tableViewController id="La6-BJ-DS5" customClass="StudentsTableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gLp-mN-dMb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -102,10 +102,10 @@
             </objects>
             <point key="canvasLocation" x="1596" y="1000"/>
         </scene>
-        <!--View Controller-->
+        <!--Post Information View Controller-->
         <scene sceneID="na2-Cj-eep">
             <objects>
-                <viewController id="I0o-H9-qAA" sceneMemberID="viewController">
+                <viewController id="I0o-H9-qAA" customClass="PostInformationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0w8-EM-mS1"/>
                         <viewControllerLayoutGuide type="bottom" id="SAy-Kj-8Ut"/>
@@ -143,6 +143,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="s2c-6w-WDu"/>
+        <segue reference="90V-K2-U2x"/>
     </inferredMetricsTieBreakers>
 </document>
