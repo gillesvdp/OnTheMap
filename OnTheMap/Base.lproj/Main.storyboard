@@ -14,6 +14,8 @@
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -44,7 +46,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="geq-tk-jqh">
-                                <rect key="frame" x="20" y="217.5" width="560" height="50"/>
+                                <rect key="frame" x="20" y="218" width="560" height="50"/>
                                 <animations/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -58,7 +60,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kWP-BU-2AJ">
-                                <rect key="frame" x="20" y="275.5" width="560" height="50"/>
+                                <rect key="frame" x="20" y="276" width="560" height="50"/>
                                 <animations/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <constraints>
@@ -69,7 +71,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEd-2s-h1B">
-                                <rect key="frame" x="20" y="333.5" width="560" height="50"/>
+                                <rect key="frame" x="20" y="334" width="560" height="50"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.97410649061203003" green="0.43479824066162109" blue="0.014459296129643917" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -79,48 +81,81 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wzb-5W-Ne8"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account? Sign up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Re-Xg-dsi">
-                                <rect key="frame" x="20" y="391.5" width="560" height="20"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A8b-MB-PnE" userLabel="EmailUITextField">
+                                <rect key="frame" x="40" y="220" width="520" height="46.5"/>
+                                <animations/>
+                                <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9QO-2c-Kf9" userLabel="PasswordUITextField">
+                                <rect key="frame" x="40" y="278" width="520" height="46"/>
+                                <animations/>
+                                <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUg-Lo-fIl">
+                                <rect key="frame" x="20" y="392" width="560" height="32"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="Don't have an account? Sign up">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signupButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fus-fw-2AT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.96845334768295288" green="0.59873110055923462" blue="0.027126852422952652" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="MUg-xI-Kmn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="06u-eu-ba6"/>
                             <constraint firstItem="kWP-BU-2AJ" firstAttribute="top" secondItem="geq-tk-jqh" secondAttribute="bottom" constant="8" id="0f7-vc-nRO"/>
+                            <constraint firstItem="iEd-2s-h1B" firstAttribute="top" secondItem="9QO-2c-Kf9" secondAttribute="bottom" constant="10" id="1f8-c9-wgK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="A8b-MB-PnE" secondAttribute="trailing" constant="20" id="1iG-jh-J8a"/>
                             <constraint firstItem="geq-tk-jqh" firstAttribute="top" secondItem="MUg-xI-Kmn" secondAttribute="bottom" constant="8" id="8hp-Ml-dEq"/>
                             <constraint firstItem="iEd-2s-h1B" firstAttribute="top" secondItem="kWP-BU-2AJ" secondAttribute="bottom" constant="8" id="AQI-GL-L4G"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="4Re-Xg-dsi" secondAttribute="trailing" id="BgD-Ef-hQA"/>
                             <constraint firstItem="MUg-xI-Kmn" firstAttribute="top" secondItem="0hh-Ct-v86" secondAttribute="bottom" id="FeY-WD-xM5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9QO-2c-Kf9" secondAttribute="trailing" constant="20" id="GMS-oq-YbT"/>
                             <constraint firstItem="geq-tk-jqh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="JnH-3q-s1j"/>
                             <constraint firstItem="0hh-Ct-v86" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="KHE-Xr-jPr"/>
                             <constraint firstItem="0hh-Ct-v86" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Knw-L5-a95"/>
-                            <constraint firstItem="4Re-Xg-dsi" firstAttribute="top" secondItem="iEd-2s-h1B" secondAttribute="bottom" constant="8" id="Orr-AD-JbY"/>
-                            <constraint firstItem="4Re-Xg-dsi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Tkr-eW-sTj"/>
+                            <constraint firstItem="A8b-MB-PnE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Mt6-KC-Amh"/>
+                            <constraint firstItem="A8b-MB-PnE" firstAttribute="top" secondItem="MUg-xI-Kmn" secondAttribute="bottom" constant="10" id="NVU-zc-wzw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MUg-xI-Kmn" secondAttribute="trailing" id="UXL-QO-Wlr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iEd-2s-h1B" secondAttribute="trailing" id="WTc-yb-ua3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0hh-Ct-v86" secondAttribute="trailing" id="WxF-kx-iy2"/>
+                            <constraint firstItem="kWP-BU-2AJ" firstAttribute="top" secondItem="A8b-MB-PnE" secondAttribute="bottom" constant="10" id="YnE-pP-Woa"/>
                             <constraint firstItem="iEd-2s-h1B" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="bRx-m7-ozs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HUg-Lo-fIl" secondAttribute="trailing" id="dMQ-ZB-XZJ"/>
                             <constraint firstItem="kWP-BU-2AJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="mOW-8X-YYH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kWP-BU-2AJ" secondAttribute="trailing" id="noA-De-8dE"/>
+                            <constraint firstItem="HUg-Lo-fIl" firstAttribute="top" secondItem="iEd-2s-h1B" secondAttribute="bottom" constant="8" id="oKz-bG-AWx"/>
                             <constraint firstItem="MUg-xI-Kmn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="onY-2R-Rew"/>
+                            <constraint firstItem="9QO-2c-Kf9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="ulc-dL-f6z"/>
+                            <constraint firstItem="9QO-2c-Kf9" firstAttribute="top" secondItem="geq-tk-jqh" secondAttribute="bottom" constant="10" id="vRx-K3-wze"/>
+                            <constraint firstItem="HUg-Lo-fIl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="wiy-wA-O9X"/>
                             <constraint firstAttribute="trailingMargin" secondItem="geq-tk-jqh" secondAttribute="trailing" id="xp3-U5-ccE"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="loginBackgroundOnlyOutlet" destination="geq-tk-jqh" id="mz8-3B-8Sz"/>
+                        <outlet property="emailBackgroundOnlyOutlet" destination="geq-tk-jqh" id="i8G-no-wFz"/>
+                        <outlet property="emailUITextFieldOutlet" destination="A8b-MB-PnE" id="zeV-Pc-Z20"/>
+                        <outlet property="loginButtonOutlet" destination="iEd-2s-h1B" id="6sx-gt-hUs"/>
                         <outlet property="passwordBackgroundOnlyOutlet" destination="kWP-BU-2AJ" id="E7W-2e-4LC"/>
+                        <outlet property="passwordUITextFieldOutlet" destination="9QO-2c-Kf9" id="RPQ-Ny-IYQ"/>
+                        <outlet property="signupButtonOutlet" destination="HUg-Lo-fIl" id="n2e-Ii-ogp"/>
                         <segue destination="fbo-UH-73R" kind="show" identifier="loggedInSuccessfully" id="fyj-It-6Gu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-627" y="607"/>
+            <point key="canvasLocation" x="-659" y="570"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8SN-QL-FWL">
