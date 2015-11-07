@@ -24,8 +24,6 @@ func JSONParsingGet(data: NSData,
             let lastName = parsedResult!["user"]!!["last_name"] as! String
             let fullName = firstName + " " + lastName
             defaults.setValue(fullName, forKey: "userFullName")
-            print(defaults.valueForKey("userFullName"))
-            
             completionHandler(success: true, errorString: nil)
         }
         

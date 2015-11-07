@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/UdacityAPI.swift"
-            timestampString = "468360596.520057"
+            timestampString = "468591007.84598"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "authenticate(_:password:completionHandler:)"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "getUserKey(_:password:completionHandler:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

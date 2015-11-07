@@ -19,8 +19,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signupButtonOutlet: UIButton!
     
     // Constants and variables
-    let udacityPostAPI = UdacityPostAPI()
-    let udacityGetAPI = UdacityGetAPI()
+    let udacityAPI = UdacityAPI()
+    //let udacityGetAPI = UdacityGetAPI()
     var appDelegate = AppDelegate()
     let defaults = NSUserDefaults.standardUserDefaults()
     
@@ -30,14 +30,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         // Add checks to see if the textfields are empty or not
         
-        udacityPostAPI.authenticate(emailUITextFieldOutlet.text!, password: passwordUITextFieldOutlet.text!,
+        udacityAPI.getUserKey(emailUITextFieldOutlet.text!, password: passwordUITextFieldOutlet.text!,
             completionHandler: {(success, errorString) -> Void in
             
                 if success {
                     dispatch_async(dispatch_get_main_queue(), {
                         
                         // Collect user name
-                        self.udacityGetAPI.getUserName(self.defaults.valueForKey("userKey") as! String, completionHandler: {
+                        self.udacityAPI.getUserName(self.defaults.valueForKey("userKey") as! String, completionHandler: {
                             (success, errorString) -> Void in
                             
                         })
