@@ -22,8 +22,7 @@
 		980AF7061BEA3A9400E2775B /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 980AF7031BEA3A9400E2775B /* Roboto-Regular.ttf */; };
 		980AF7071BEA3A9400E2775B /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 980AF7041BEA3A9400E2775B /* Roboto-Thin.ttf */; };
 		980AF70A1BEA4F5400E2775B /* UdacityAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980AF7091BEA4F5400E2775B /* UdacityAPI.swift */; };
-		980AF70D1BEA734200E2775B /* JSONParsingPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980AF70C1BEA734200E2775B /* JSONParsingPost.swift */; };
-		98B293D31BEE179E0068367D /* JSONParsingGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B293D21BEE179E0068367D /* JSONParsingGet.swift */; };
+		980AF70D1BEA734200E2775B /* ParsingJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980AF70C1BEA734200E2775B /* ParsingJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +64,7 @@
 		980AF7031BEA3A9400E2775B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		980AF7041BEA3A9400E2775B /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		980AF7091BEA4F5400E2775B /* UdacityAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityAPI.swift; sourceTree = "<group>"; };
-		980AF70C1BEA734200E2775B /* JSONParsingPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParsingPost.swift; sourceTree = "<group>"; };
-		98B293D21BEE179E0068367D /* JSONParsingGet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParsingGet.swift; sourceTree = "<group>"; };
+		980AF70C1BEA734200E2775B /* ParsingJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsingJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,8 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				980AF7091BEA4F5400E2775B /* UdacityAPI.swift */,
-				980AF70C1BEA734200E2775B /* JSONParsingPost.swift */,
-				98B293D21BEE179E0068367D /* JSONParsingGet.swift */,
+				980AF70C1BEA734200E2775B /* ParsingJSON.swift */,
 			);
 			name = APIs;
 			sourceTree = "<group>";
@@ -315,9 +312,8 @@
 			files = (
 				980AF6D31BEA2D2600E2775B /* OnTheMap.xcdatamodeld in Sources */,
 				980AF7011BEA318100E2775B /* PostInformationViewController.swift in Sources */,
-				980AF70D1BEA734200E2775B /* JSONParsingPost.swift in Sources */,
+				980AF70D1BEA734200E2775B /* ParsingJSON.swift in Sources */,
 				980AF70A1BEA4F5400E2775B /* UdacityAPI.swift in Sources */,
-				98B293D31BEE179E0068367D /* JSONParsingGet.swift in Sources */,
 				980AF6CD1BEA2D2600E2775B /* LoginViewController.swift in Sources */,
 				980AF6CB1BEA2D2600E2775B /* AppDelegate.swift in Sources */,
 				980AF6FD1BEA313600E2775B /* StudentsMapViewController.swift in Sources */,

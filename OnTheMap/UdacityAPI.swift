@@ -10,6 +10,8 @@ import Foundation
 
 class UdacityAPI {
     
+    let jsonParsing = ParsingJSON()
+    
     // Login function
     func getUserKey(email: String, password: String,
         completionHandler: (success: Bool, errorString: NSError?) -> Void ) {
@@ -31,7 +33,7 @@ class UdacityAPI {
                 
             } else {
                 let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5))
-                JSONParsingPost(newData, completionHandler: completionHandler)
+                self.jsonParsing.userKey(newData, completionHandler: completionHandler)
             }
         }
         task.resume()
@@ -56,7 +58,7 @@ class UdacityAPI {
                     
                 } else {
                     let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5))
-                    JSONParsingGet(newData, completionHandler: completionHandler)
+                    self.jsonParsing.userFullName(newData, completionHandler: completionHandler)
                 }
             }
             task.resume()
