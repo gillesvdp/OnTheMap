@@ -8,10 +8,10 @@
 
 import Foundation
 
-func JSONParsing(data: NSData,
+func JSONParsingPost(data: NSData,
     completionHandler: (success: Bool, errorString: NSError?) -> Void) {
         
-        var appDelegate = AppDelegate()
+        let defaults = NSUserDefaults.standardUserDefaults()
         
         var parsingError: NSError? = nil
         let parsedResult: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
@@ -20,9 +20,7 @@ func JSONParsing(data: NSData,
             completionHandler(success: false, errorString: error)
             
         } else {
-            print("parsedResult is \(parsedResult!)")
-            appDelegate.UdacityUserKey = parsedResult!["account"]!!["key"] as! String
-            print(appDelegate.UdacityUserKey)
+            defaults.setValue(parsedResult!["account"]!!["key"] as! String, forKey: "userKey")
             completionHandler(success: true, errorString: nil)
         }
         

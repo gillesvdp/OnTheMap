@@ -8,7 +8,8 @@
 
 import Foundation
 
-class UdacityAPI {
+class UdacityPostAPI {
+    
     
     func authenticate(email: String, password: String,
         completionHandler: (success: Bool, errorString: NSError?) -> Void ) {
@@ -30,7 +31,7 @@ class UdacityAPI {
                 
             } else {
                 let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5))
-                JSONParsing(newData, completionHandler: completionHandler)
+                JSONParsingPost(newData, completionHandler: completionHandler)
             }
         }
         task.resume()
