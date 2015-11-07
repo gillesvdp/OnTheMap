@@ -29,6 +29,7 @@ class UdacityAPI {
             data, response, downloadError in
             
             if let error = downloadError {
+                print("Error: Check your connection and try again")
                 completionHandler(success: false, errorString: downloadError)
                 
             } else {
@@ -62,6 +63,47 @@ class UdacityAPI {
                 }
             }
             task.resume()
+    }
+    
+    // Logout function
+    func logOut(completionHandler: (success: Bool, errorString: NSError?) -> Void) {
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
+        request.HTTPMethod = "DELETE"
+        var xsrfCookie: NSHTTPCookie? = nil
+    
+        let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+    
+        for cookie in (sharedCookieStorage.cookies! as [NSHTTPCookie]) {
+    
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+    
+        }
+    
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+    
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) {
+            data, response, downloadError in
+            
+            if let error = downloadError {
+                
+                // Could not log out
+                completionHandler(success: false, errorString: downloadError)
+                
+            } else {
+                // Logged out successfully
+                completionHandler(success: true, errorString: nil)
+            }
+        
+        let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5)) /* subset response data! */
+        //print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+            
+        }
+        
+        task.resume()
     }
 }
     

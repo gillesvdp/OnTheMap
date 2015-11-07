@@ -23,6 +23,7 @@
 		980AF7071BEA3A9400E2775B /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 980AF7041BEA3A9400E2775B /* Roboto-Thin.ttf */; };
 		980AF70A1BEA4F5400E2775B /* UdacityAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980AF7091BEA4F5400E2775B /* UdacityAPI.swift */; };
 		980AF70D1BEA734200E2775B /* ParsingJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980AF70C1BEA734200E2775B /* ParsingJSON.swift */; };
+		98B293D71BEE2A4A0068367D /* TapBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B293D61BEE2A4A0068367D /* TapBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		980AF7041BEA3A9400E2775B /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		980AF7091BEA4F5400E2775B /* UdacityAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityAPI.swift; sourceTree = "<group>"; };
 		980AF70C1BEA734200E2775B /* ParsingJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsingJSON.swift; sourceTree = "<group>"; };
+		98B293D61BEE2A4A0068367D /* TapBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				980AF6CC1BEA2D2600E2775B /* LoginViewController.swift */,
+				98B293D61BEE2A4A0068367D /* TapBarViewController.swift */,
 				980AF6FC1BEA313600E2775B /* StudentsMapViewController.swift */,
 				980AF6FE1BEA316100E2775B /* StudentsTableViewController.swift */,
 				980AF7001BEA318100E2775B /* PostInformationViewController.swift */,
@@ -318,6 +321,7 @@
 				980AF6CB1BEA2D2600E2775B /* AppDelegate.swift in Sources */,
 				980AF6FD1BEA313600E2775B /* StudentsMapViewController.swift in Sources */,
 				980AF6FF1BEA316100E2775B /* StudentsTableViewController.swift in Sources */,
+				98B293D71BEE2A4A0068367D /* TapBarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

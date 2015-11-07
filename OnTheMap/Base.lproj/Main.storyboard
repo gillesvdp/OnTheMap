@@ -31,24 +31,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="udacity" translatesAutoresizingMaskIntoConstraints="NO" id="0hh-Ct-v86">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="udacity" translatesAutoresizingMaskIntoConstraints="NO" id="0hh-Ct-v86">
                                 <rect key="frame" x="20" y="40" width="560" height="150"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="b9t-3z-VhN"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUg-xI-Kmn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Login to Udacity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUg-xI-Kmn">
                                 <rect key="frame" x="20" y="190" width="560" height="20"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="geq-tk-jqh">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="geq-tk-jqh">
                                 <rect key="frame" x="20" y="218" width="560" height="50"/>
                                 <animations/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="NO"/>
                                 </accessibility>
@@ -59,10 +59,10 @@
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kWP-BU-2AJ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kWP-BU-2AJ">
                                 <rect key="frame" x="20" y="276" width="560" height="50"/>
                                 <animations/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="1Q6-GI-0Nm"/>
                                 </constraints>
@@ -70,7 +70,7 @@
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEd-2s-h1B">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEd-2s-h1B">
                                 <rect key="frame" x="20" y="334" width="560" height="50"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.97410649061203003" green="0.43479824066162109" blue="0.014459296129643917" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -85,21 +85,21 @@
                                     <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wzb-5W-Ne8"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A8b-MB-PnE" userLabel="EmailUITextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A8b-MB-PnE" userLabel="EmailUITextField">
                                 <rect key="frame" x="40" y="220" width="520" height="46.5"/>
                                 <animations/>
                                 <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9QO-2c-Kf9" userLabel="PasswordUITextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9QO-2c-Kf9" userLabel="PasswordUITextField">
                                 <rect key="frame" x="40" y="278" width="520" height="46"/>
                                 <animations/>
                                 <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUg-Lo-fIl">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUg-Lo-fIl">
                                 <rect key="frame" x="20" y="392" width="560" height="32"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
@@ -143,6 +143,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="geq-tk-jqh" secondAttribute="trailing" id="xp3-U5-ccE"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="eqO-Gj-Q4m"/>
                     <connections>
                         <outlet property="emailBackgroundOnlyOutlet" destination="geq-tk-jqh" id="i8G-no-wFz"/>
                         <outlet property="emailUITextFieldOutlet" destination="A8b-MB-PnE" id="zeV-Pc-Z20"/>
@@ -155,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-659" y="570"/>
+            <point key="canvasLocation" x="-576" y="607"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8SN-QL-FWL">
@@ -251,15 +252,21 @@
             </objects>
             <point key="canvasLocation" x="2322" y="857"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tap Bar View Controller-->
         <scene sceneID="LkL-Hg-JlS">
             <objects>
-                <tabBarController id="vHm-hJ-bZP" sceneMemberID="viewController">
+                <tabBarController id="vHm-hJ-bZP" customClass="TapBarViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="yvE-Mw-ZBt">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="fKw-EY-tHX">
-                            <connections>
-                                <segue destination="BYZ-38-t0r" kind="presentation" id="cOl-38-xjn"/>
-                            </connections>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="1oY-Sv-dLg">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GGN-wi-1io">
+                                <rect key="frame" x="20" y="7" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logOutButtonPressed:" destination="vHm-hJ-bZP" eventType="touchUpInside" id="V46-V5-Z1U"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Pdg-hq-Y3d">
@@ -271,6 +278,7 @@
                     <connections>
                         <segue destination="6jT-oy-M7G" kind="relationship" relationship="viewControllers" id="okc-ZO-4Zd"/>
                         <segue destination="La6-BJ-DS5" kind="relationship" relationship="viewControllers" id="IjZ-gV-aWf"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="loggedOut" modalPresentationStyle="fullScreen" id="2ik-Bh-cFP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oIt-ks-Uqr" userLabel="First Responder" sceneMemberID="firstResponder"/>
