@@ -12,8 +12,8 @@ class UdacityAPI {
     
     let jsonParsing = ParsingJSON()
     
-    // Login function
-    func getUserKey(email: String, password: String,
+    // Login
+    func login(email: String, password: String,
         completionHandler: (success: Bool, errorString: NSError?) -> Void ) {
     
         let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
@@ -65,7 +65,7 @@ class UdacityAPI {
             task.resume()
     }
     
-    // Logout function
+    // Logout
     func logOut(completionHandler: (success: Bool, errorString: NSError?) -> Void) {
         
         let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)

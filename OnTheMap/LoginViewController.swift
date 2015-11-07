@@ -30,7 +30,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         // Add checks to see if the textfields are empty or not
         
-        udacityAPI.getUserKey(emailUITextFieldOutlet.text!, password: passwordUITextFieldOutlet.text!,
+        udacityAPI.login(emailUITextFieldOutlet.text!, password: passwordUITextFieldOutlet.text!,
             completionHandler: {(success, errorString) -> Void in
             
                 if success {

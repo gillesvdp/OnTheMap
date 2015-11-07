@@ -15,18 +15,16 @@ class TapBarViewController: UITabBarController {
     @IBAction func logOutButtonPressed(sender: AnyObject) {
         udacityAPI.logOut { (success, errorString) -> Void in
             if let error = errorString {
+                // There was an error logging out
                 
-            } else {
+            }
+            else {
                 dispatch_async(dispatch_get_main_queue(), {
                     self.performSegueWithIdentifier("loggedOut", sender: nil)
                 })
             }
         }
-    
-    
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
