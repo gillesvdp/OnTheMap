@@ -10,11 +10,11 @@ import Foundation
 
 class UdacityAPI {
     
-    let jsonParsing = ParsingJSON()
+    let parsingJson = ParsingJSON()
     
     // Login
     func login(email: String, password: String,
-        completionHandler: (success: Bool, errorString: NSError?) -> Void ) {
+        completionHandler: (success: Bool, errorString: String?) -> Void ) {
     
         let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
         
@@ -28,13 +28,14 @@ class UdacityAPI {
         let task = session.dataTaskWithRequest(request) {
             data, response, downloadError in
             
+            // Checking for connection errors
             if let error = downloadError {
-                print("Error: Check your connection and try again")
-                completionHandler(success: false, errorString: downloadError)
-                
+                completionHandler(success: false, errorString: "Connectivity error: try again")
+            
+            // There was no connectivity issue, the data received will be checked.
             } else {
                 let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5))
-                self.jsonParsing.userKey(newData, completionHandler: completionHandler)
+                self.parsingJson.userKey(newData, completionHandler: completionHandler)
             }
         }
         task.resume()
@@ -43,7 +44,7 @@ class UdacityAPI {
     
     // Retrieving the user name upon successful login
     func getUserName(userKey: String,
-        completionHandler: (success: Bool, errorString: NSError?) -> Void ) {
+        completionHandler: (success: Bool, errorString: String?) -> Void ) {
             
             let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/users/\(userKey)")!)
             
@@ -55,18 +56,18 @@ class UdacityAPI {
                 data, response, downloadError in
                 
                 if let error = downloadError {
-                    completionHandler(success: false, errorString: downloadError)
+                    completionHandler(success: false, errorString: "Connectivity error: try again")
                     
                 } else {
                     let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5))
-                    self.jsonParsing.userFullName(newData, completionHandler: completionHandler)
+                    self.parsingJson.userFullName(newData, completionHandler: completionHandler)
                 }
             }
             task.resume()
     }
     
     // Logout
-    func logOut(completionHandler: (success: Bool, errorString: NSError?) -> Void) {
+    func logOut(completionHandler: (success: Bool, errorString: String?) -> Void) {
         
         let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
         request.HTTPMethod = "DELETE"
@@ -89,16 +90,13 @@ class UdacityAPI {
             data, response, downloadError in
             
             if let error = downloadError {
-                
-                // Could not log out
-                completionHandler(success: false, errorString: downloadError)
+                completionHandler(success: false, errorString: "Connectivity error: try again")
                 
             } else {
-                // Logged out successfully
                 completionHandler(success: true, errorString: nil)
             }
         
-        let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5)) /* subset response data! */
+        //let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5)) /* subset response data! */
         //print(NSString(data: newData, encoding: NSUTF8StringEncoding))
             
         }

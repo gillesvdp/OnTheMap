@@ -11,43 +11,34 @@ import Foundation
 class ParsingJSON {
 
     func userKey(data: NSData,
-        completionHandler: (success: Bool, errorString: NSError?) -> Void) {
-        
-            let defaults = NSUserDefaults.standardUserDefaults()
-        
-            var parsingError: NSError? = nil
-            let parsedResult: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
-        
-            if let error = parsingError {
-            completionHandler(success: false, errorString: error)
+        completionHandler: (success: Bool, errorString: String?) -> Void) {
             
+            let defaults = NSUserDefaults.standardUserDefaults()
+            
+            let parsedResult: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
+                
+            if let emailPwdError = parsedResult!["status"] as? Int {
+                //The key "status" appears when there is an email/pwd problem
+                completionHandler(success: false, errorString: "Incorrect email or password")
+                    
             } else {
                 defaults.setValue(parsedResult!["account"]!!["key"] as! String, forKey: "userKey")
                 completionHandler(success: true, errorString: nil)
+                    
             }
     }
     
-    
     func userFullName(data: NSData,
-        completionHandler: (success: Bool, errorString: NSError?) -> Void) {
+        completionHandler: (success: Bool, errorString: String?) -> Void) {
             
             let defaults = NSUserDefaults.standardUserDefaults()
             
-            var parsingError: NSError? = nil
             let parsedResult: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
-            
-            if let error = parsingError {
-                completionHandler(success: false, errorString: error)
-                
-            } else {
-                let firstName = parsedResult!["user"]!!["first_name"] as! String
-                let lastName = parsedResult!["user"]!!["last_name"] as! String
-                let fullName = firstName + " " + lastName
-                defaults.setValue(fullName, forKey: "userFullName")
-                completionHandler(success: true, errorString: nil)
-            }
-            
+            let firstName = parsedResult!["user"]!!["first_name"] as! String
+            let lastName = parsedResult!["user"]!!["last_name"] as! String
+            let fullName = firstName + " " + lastName
+            defaults.setValue(fullName, forKey: "userFullName")
+            completionHandler(success: true, errorString: nil)
     }
-    
 }
 

@@ -31,21 +31,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="udacity" translatesAutoresizingMaskIntoConstraints="NO" id="0hh-Ct-v86">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="udacity" translatesAutoresizingMaskIntoConstraints="NO" id="0hh-Ct-v86">
                                 <rect key="frame" x="20" y="40" width="560" height="150"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="b9t-3z-VhN"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Login to Udacity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUg-xI-Kmn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUg-xI-Kmn">
                                 <rect key="frame" x="20" y="190" width="560" height="20"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="geq-tk-jqh">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="geq-tk-jqh">
                                 <rect key="frame" x="20" y="218" width="560" height="50"/>
                                 <animations/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
@@ -59,7 +59,7 @@
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kWP-BU-2AJ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kWP-BU-2AJ">
                                 <rect key="frame" x="20" y="276" width="560" height="50"/>
                                 <animations/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
@@ -70,7 +70,7 @@
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEd-2s-h1B">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEd-2s-h1B">
                                 <rect key="frame" x="20" y="334" width="560" height="50"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.97410649061203003" green="0.43479824066162109" blue="0.014459296129643917" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -85,21 +85,21 @@
                                     <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wzb-5W-Ne8"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A8b-MB-PnE" userLabel="EmailUITextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A8b-MB-PnE" userLabel="EmailUITextField">
                                 <rect key="frame" x="40" y="220" width="520" height="46.5"/>
                                 <animations/>
                                 <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9QO-2c-Kf9" userLabel="PasswordUITextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9QO-2c-Kf9" userLabel="PasswordUITextField">
                                 <rect key="frame" x="40" y="278" width="520" height="46"/>
                                 <animations/>
                                 <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUg-Lo-fIl">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUg-Lo-fIl">
                                 <rect key="frame" x="20" y="392" width="560" height="32"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
@@ -110,6 +110,10 @@
                                     <action selector="signupButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fus-fw-2AT"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8cE-lO-4bM">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                                <animations/>
+                            </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.96845334768295288" green="0.59873110055923462" blue="0.027126852422952652" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -127,6 +131,7 @@
                             <constraint firstItem="0hh-Ct-v86" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Knw-L5-a95"/>
                             <constraint firstItem="A8b-MB-PnE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Mt6-KC-Amh"/>
                             <constraint firstItem="A8b-MB-PnE" firstAttribute="top" secondItem="MUg-xI-Kmn" secondAttribute="bottom" constant="10" id="NVU-zc-wzw"/>
+                            <constraint firstItem="8cE-lO-4bM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RY1-Ea-onH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MUg-xI-Kmn" secondAttribute="trailing" id="UXL-QO-Wlr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iEd-2s-h1B" secondAttribute="trailing" id="WTc-yb-ua3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0hh-Ct-v86" secondAttribute="trailing" id="WxF-kx-iy2"/>
@@ -137,6 +142,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="kWP-BU-2AJ" secondAttribute="trailing" id="noA-De-8dE"/>
                             <constraint firstItem="HUg-Lo-fIl" firstAttribute="top" secondItem="iEd-2s-h1B" secondAttribute="bottom" constant="8" id="oKz-bG-AWx"/>
                             <constraint firstItem="MUg-xI-Kmn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="onY-2R-Rew"/>
+                            <constraint firstItem="8cE-lO-4bM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="tTe-xJ-9St"/>
                             <constraint firstItem="9QO-2c-Kf9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="ulc-dL-f6z"/>
                             <constraint firstItem="9QO-2c-Kf9" firstAttribute="top" secondItem="geq-tk-jqh" secondAttribute="bottom" constant="10" id="vRx-K3-wze"/>
                             <constraint firstItem="HUg-Lo-fIl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="wiy-wA-O9X"/>
@@ -145,6 +151,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="eqO-Gj-Q4m"/>
                     <connections>
+                        <outlet property="activityIndicatorOutlet" destination="8cE-lO-4bM" id="jLs-2R-cIo"/>
                         <outlet property="emailBackgroundOnlyOutlet" destination="geq-tk-jqh" id="i8G-no-wFz"/>
                         <outlet property="emailUITextFieldOutlet" destination="A8b-MB-PnE" id="zeV-Pc-Z20"/>
                         <outlet property="loginButtonOutlet" destination="iEd-2s-h1B" id="6sx-gt-hUs"/>
@@ -156,7 +163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-576" y="607"/>
+            <point key="canvasLocation" x="-615" y="607"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8SN-QL-FWL">

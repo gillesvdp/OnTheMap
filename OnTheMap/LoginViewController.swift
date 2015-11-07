@@ -24,35 +24,48 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var appDelegate = AppDelegate()
     let defaults = NSUserDefaults.standardUserDefaults()
     
+    @IBOutlet weak var activityIndicatorOutlet: UIActivityIndicatorView!
     
     // Button Actions
     @IBAction func loginButtonPressed(sender: AnyObject) {
+        defreezeScreen(false)
+        activityIndicatorOutlet.startAnimating()
         
         // Add checks to see if the textfields are empty or not
         
         udacityAPI.login(emailUITextFieldOutlet.text!, password: passwordUITextFieldOutlet.text!,
             completionHandler: {(success, errorString) -> Void in
             
-                if success {
-                    dispatch_async(dispatch_get_main_queue(), {
-                        
-                        // Collect user name
-                        self.udacityAPI.getUserName(self.defaults.valueForKey("userKey") as! String, completionHandler: {
-                            (success, errorString) -> Void in
-                            
-                        })
-                        
-                        // Go to the next screen
-                        self.performSegueWithIdentifier("loggedInSuccessfully", sender: nil)
-                    })
-                } else {
-                    dispatch_async(dispatch_get_main_queue(), {
-                        print(errorString)
-                    })
-                }
+                dispatch_async(dispatch_get_main_queue(), {
+                    if success {
+                        self.getUserFullNameAndMoveOnToTheNextScreen()
+                    } else {
+                        self.endLoginProcess(success, errorString: errorString)
+                    }
+                })
         })
     }
     
+    func getUserFullNameAndMoveOnToTheNextScreen() {
+        self.udacityAPI.getUserName(self.defaults.valueForKey("userKey") as! String,
+            completionHandler: { (success, errorString) -> Void in
+            
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.endLoginProcess(success, errorString: errorString)
+                })
+        })
+    }
+    
+    func endLoginProcess(success: Bool, errorString: String?) {
+        defreezeScreen(true)
+        activityIndicatorOutlet.stopAnimating()
+        if success {
+            performSegueWithIdentifier("loggedInSuccessfully", sender: nil)
+            
+        } else {
+            displayAlertController(errorString!)
+        }
+    }
     
     @IBAction func signupButtonPressed(sender: AnyObject) {
         // Go to sign-up page of Udacity in Safari
@@ -79,6 +92,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.touchesBegan(touches, withEvent: event)
     }
 
+    // Screen behavior
+    
+    func defreezeScreen(variable: Bool){
+        emailUITextFieldOutlet.enabled = variable
+        passwordUITextFieldOutlet.enabled = variable
+        loginButtonOutlet.enabled = variable
+        signupButtonOutlet.enabled = variable
+    }
+    
+    func displayAlertController(errorString: String) {
+        let errorAlert = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+        errorAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(errorAlert, animated: true, completion: nil)
+    }
+    
 
 }
 
