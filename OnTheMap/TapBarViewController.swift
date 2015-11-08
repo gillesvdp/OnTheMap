@@ -10,6 +10,7 @@ import UIKit
 
 class TapBarViewController: UITabBarController {
 
+    let parseApi = ParseAPI()
     let udacityAPI = UdacityAPI()
     let defaults = NSUserDefaults.standardUserDefaults()
 
@@ -45,11 +46,28 @@ class TapBarViewController: UITabBarController {
     
     
     @IBAction func refreshButtonPressed(sender: AnyObject) {
-        
+        parseApi.getStudentLocations { (success, errorString) -> Void in
+            
+            if success {
+                dispatch_async(dispatch_get_main_queue(), {
+                    print("refreshed screen")
+                    self.viewWillAppear(true)
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    print(errorString)
+                })
+            }
+        }
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
     }
 
 }

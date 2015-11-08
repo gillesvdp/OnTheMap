@@ -34,8 +34,9 @@ class ParsingJSON {
             
             let firstName = parsedResult!["user"]!!["first_name"] as! String
             let lastName = parsedResult!["user"]!!["last_name"] as! String
-            let fullName = firstName + " " + lastName
-            defaults.setValue(fullName, forKey: "userFullName")
+            defaults.setValue(firstName, forKey: "firstName")
+            defaults.setValue(lastName, forKey: "lastName")
+            
             completionHandler(success: true, errorString: nil)
     }
     
