@@ -36,17 +36,8 @@ class ParseAPI {
         task.resume()
     }
     
-    func postStudentLocation(studentInfoToPost: [String: AnyObject],
+    func postStudentLocation(studentInfoToPost: NSData,
         completionHandler: (success: Bool, errorString: String?) -> Void) {
-        
-        let uniqueKey = studentInfoToPost["uniqueKey"]
-        let firstName = studentInfoToPost["firstName"]
-        let lastName = studentInfoToPost["lastName"]
-        let mapString = studentInfoToPost["mapString"]
-        let mediaURL = studentInfoToPost["mediaUrl"]
-        let latitude = studentInfoToPost["latitude"]
-        let longitute = studentInfoToPost["longitute"]
-            
             
         let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation")!)
         
@@ -58,7 +49,7 @@ class ParseAPI {
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        request.HTTPBody = "{\"uniqueKey\": \"\(uniqueKey)\", \"firstName\": \"\(firstName)\", \"lastName\": \"\(lastName)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(mediaURL)\",\"latitude\": \(latitude), \"longitude\": \(longitute)}".dataUsingEncoding(NSUTF8StringEncoding)
+        request.HTTPBody = studentInfoToPost
         
         let session = NSURLSession.sharedSession()
         
@@ -70,7 +61,6 @@ class ParseAPI {
                 
             } else {
             
-                print(NSString(data: data!, encoding: NSUTF8StringEncoding))
                 completionHandler(success: true, errorString: nil)
             }
             

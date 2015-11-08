@@ -74,7 +74,7 @@ class PostInformationViewController: UIViewController {
             let latitude = places[0].location!.coordinate.latitude
             let longitude = places[0].location!.coordinate.longitude
 
-            let studentInfoToPost = [
+            var studentInfoToPost = [
                 "uniqueKey": uniqueKey,
                 "firstName": firstName,
                 "lastName" : lastName,
@@ -86,7 +86,9 @@ class PostInformationViewController: UIViewController {
             
             print(studentInfoToPost)
             
-            parseApi.postStudentLocation(studentInfoToPost,
+            let studentInfoToPostConvertedToJSON = try? NSJSONSerialization.dataWithJSONObject(studentInfoToPost, options: NSJSONWritingOptions.PrettyPrinted)
+            
+            parseApi.postStudentLocation(studentInfoToPostConvertedToJSON!,
                 completionHandler: {(success, errorString) -> Void in
                     if success {
                         print("success")

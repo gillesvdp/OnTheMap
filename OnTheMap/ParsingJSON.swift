@@ -67,6 +67,5 @@ class ParsingJSON {
             completionHandler(success: true, errorString: nil)
             
     }
-
 }
 
