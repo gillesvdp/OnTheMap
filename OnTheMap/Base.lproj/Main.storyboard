@@ -283,6 +283,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="logOutButtonOutlet" destination="GGN-wi-1io" id="bnL-Rm-8SI"/>
                         <segue destination="6jT-oy-M7G" kind="relationship" relationship="viewControllers" id="okc-ZO-4Zd"/>
                         <segue destination="La6-BJ-DS5" kind="relationship" relationship="viewControllers" id="IjZ-gV-aWf"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="loggedOut" modalPresentationStyle="fullScreen" id="2ik-Bh-cFP"/>

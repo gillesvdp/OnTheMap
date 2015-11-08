@@ -11,9 +11,14 @@ import UIKit
 class TapBarViewController: UITabBarController {
 
     let udacityAPI = UdacityAPI()
+
+    @IBOutlet weak var logOutButtonOutlet: UIButton!
     
     @IBAction func logOutButtonPressed(sender: AnyObject) {
         udacityAPI.logOut { (success, errorString) -> Void in
+            
+            self.logOutButtonOutlet.enabled = false
+            
             if let error = errorString {
                 // There was an error logging out
                 

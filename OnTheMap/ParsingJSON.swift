@@ -24,7 +24,6 @@ class ParsingJSON {
             } else {
                 defaults.setValue(parsedResult!["account"]!!["key"] as! String, forKey: "userKey")
                 completionHandler(success: true, errorString: nil)
-                    
             }
     }
     
@@ -34,11 +33,25 @@ class ParsingJSON {
             let defaults = NSUserDefaults.standardUserDefaults()
             
             let parsedResult: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
-            let firstName = parsedResult!["user"]!!["first_name"] as! String
-            let lastName = parsedResult!["user"]!!["last_name"] as! String
-            let fullName = firstName + " " + lastName
-            defaults.setValue(fullName, forKey: "userFullName")
-            completionHandler(success: true, errorString: nil)
+            
+            if let firstName = parsedResult!["user"]!!["first_name"] as? String {
+                if let lastName = parsedResult!["user"]!!["last_name"] as? String {
+                    
+                    let firstName = parsedResult!["user"]!!["first_name"] as! String
+                    let lastName = parsedResult!["user"]!!["last_name"] as! String
+                    let fullName = firstName + " " + lastName
+                    defaults.setValue(fullName, forKey: "userFullName")
+                    completionHandler(success: true, errorString: nil)
+                } else {
+                    // Could parse the first name but not the last name
+                    completionHandler(success: false, errorString: "Try again or Contact the system administrator")
+                }
+            } else {
+                // Could not parse the first name
+                completionHandler(success: false, errorString: "Try again or Contact the system administrator")
+            }
+            
+
     }
 }
 
