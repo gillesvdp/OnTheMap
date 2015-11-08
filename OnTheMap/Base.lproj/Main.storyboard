@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Roboto-Medium.ttf">
@@ -211,12 +212,12 @@
                     <tabBarItem key="tabBarItem" title="Map" image="map" id="Rwz-xH-mi0"/>
                     <connections>
                         <outlet property="mapView" destination="EcX-9x-C9L" id="D23-ol-cqq"/>
-                        <segue destination="I0o-H9-qAA" kind="show" identifier="goToPostInformationViewController" id="90V-K2-U2x"/>
+                        <segue destination="I0o-H9-qAA" kind="show" identifier="goToPostInformationViewController" id="NQe-g9-mGN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pfh-r3-R7W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1596" y="279"/>
+            <point key="canvasLocation" x="1596" y="255"/>
         </scene>
         <!--List-->
         <scene sceneID="IhJ-Kr-cp9">
@@ -246,7 +247,7 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="List" image="list" id="i4c-gD-eYz"/>
                     <connections>
-                        <segue destination="I0o-H9-qAA" kind="show" identifier="goToPostInformationViewController" id="s2c-6w-WDu"/>
+                        <segue destination="I0o-H9-qAA" kind="show" identifier="goToPostInformationViewController" id="CgJ-aZ-ubP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fSX-ay-sIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -270,7 +271,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fDk-WN-nh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2322" y="857"/>
+            <point key="canvasLocation" x="2384" y="614"/>
         </scene>
         <!--Tap Bar View Controller-->
         <scene sceneID="LkL-Hg-JlS">
@@ -288,6 +289,18 @@
                                 </connections>
                             </button>
                         </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="osO-0G-Efa">
+                                <connections>
+                                    <action selector="refreshButtonPressed:" destination="vHm-hJ-bZP" id="s8T-pa-1dM"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="pin" id="Wdb-yt-v4T">
+                                <connections>
+                                    <action selector="postInformationButtonPressed:" destination="vHm-hJ-bZP" id="9tc-0H-gaD"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Pdg-hq-Y3d">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -297,9 +310,12 @@
                     </tabBar>
                     <connections>
                         <outlet property="logOutButtonOutlet" destination="GGN-wi-1io" id="bnL-Rm-8SI"/>
+                        <outlet property="postInformationButtonOutlet" destination="Wdb-yt-v4T" id="KPY-QJ-W3d"/>
+                        <outlet property="refreshButtonOutlet" destination="osO-0G-Efa" id="pgF-ig-7Lo"/>
                         <segue destination="6jT-oy-M7G" kind="relationship" relationship="viewControllers" id="okc-ZO-4Zd"/>
                         <segue destination="La6-BJ-DS5" kind="relationship" relationship="viewControllers" id="IjZ-gV-aWf"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="loggedOut" modalPresentationStyle="fullScreen" id="2ik-Bh-cFP"/>
+                        <segue destination="I0o-H9-qAA" kind="show" identifier="goToPostInformationViewController" id="pak-d7-r7P"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oIt-ks-Uqr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -310,9 +326,10 @@
     <resources>
         <image name="list" width="32" height="32"/>
         <image name="map" width="32" height="32"/>
+        <image name="pin" width="32" height="32"/>
         <image name="udacity" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="90V-K2-U2x"/>
+        <segue reference="NQe-g9-mGN"/>
     </inferredMetricsTieBreakers>
 </document>

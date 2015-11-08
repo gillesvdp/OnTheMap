@@ -10,10 +10,10 @@ import Foundation
 
 class ParsingJSON {
 
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
     func userKey(data: NSData,
         completionHandler: (success: Bool, errorString: String?) -> Void) {
-            
-            let defaults = NSUserDefaults.standardUserDefaults()
             
             let parsedResult: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
                 
@@ -29,8 +29,6 @@ class ParsingJSON {
     
     func userFullName(data: NSData,
         completionHandler: (success: Bool, errorString: String?) -> Void) {
-            
-            let defaults = NSUserDefaults.standardUserDefaults()
             
             let parsedResult: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
             

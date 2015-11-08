@@ -20,7 +20,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // Constants and variables
     let udacityAPI = UdacityAPI()
-    //let udacityGetAPI = UdacityGetAPI()
     var appDelegate = AppDelegate()
     let defaults = NSUserDefaults.standardUserDefaults()
     
