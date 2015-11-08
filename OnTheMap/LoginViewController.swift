@@ -90,10 +90,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
     // Screen behavior
     
     func defreezeScreen(variable: Bool){
+        emailUITextFieldOutlet.delegate = self
+        passwordUITextFieldOutlet.delegate = self
         emailUITextFieldOutlet.enabled = variable
         passwordUITextFieldOutlet.enabled = variable
         loginButtonOutlet.enabled = variable
