@@ -13,7 +13,7 @@ class ParseAPI {
     let parsingJson = ParsingJSON()
     
     func getStudentLocations(
-        completionHandler: (success: Bool, studentInfo100: [[String: AnyObject]]?, errorString: String?) -> Void ) {
+        completionHandler: (success: Bool, errorString: String?) -> Void ) {
             
         let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation?limit=100")!)
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
@@ -26,7 +26,7 @@ class ParseAPI {
             data, response, downloadError in
             
             if let error = downloadError { 
-                completionHandler(success: false, studentInfo100: nil, errorString: "Connectivity error: try again")
+                completionHandler(success: false, errorString: "Connectivity error: try again")
                 
             } else {
                 self.parsingJson.studentInfo100(data!, completionHandler: completionHandler)

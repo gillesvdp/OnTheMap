@@ -40,7 +40,7 @@ class ParsingJSON {
     }
     
     func studentInfo100(data: NSData,
-        completionHandler: (success: Bool, studentInfo100: [[String: AnyObject]]?, errorString: String?) -> Void) {
+        completionHandler: (success: Bool, errorString: String?) -> Void) {
     
             let parsedResult: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
             
@@ -63,7 +63,7 @@ class ParsingJSON {
             }
             
             defaults.setObject(studentInfo100, forKey: "studentInfo100")
-            completionHandler(success: true, studentInfo100: studentInfo100, errorString: nil)
+            completionHandler(success: true, errorString: nil)
             
     }
 

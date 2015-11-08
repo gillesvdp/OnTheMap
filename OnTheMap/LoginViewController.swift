@@ -46,7 +46,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func getUserFullNameAndMoveOnToTheNextScreen() {
-        self.udacityAPI.getUserName(self.defaults.valueForKey("userKey") as! String,
+        self.udacityAPI.getUserFullName(self.defaults.valueForKey("userKey") as! String,
             completionHandler: { (success, errorString) -> Void in
             
                 dispatch_async(dispatch_get_main_queue(), {

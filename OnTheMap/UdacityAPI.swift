@@ -43,7 +43,7 @@ class UdacityAPI {
     
     
     // Retrieving the user name upon successful login
-    func getUserName(userKey: String,
+    func getUserFullName(userKey: String,
         completionHandler: (success: Bool, errorString: String?) -> Void ) {
             
             let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/users/\(userKey)")!)
