@@ -193,11 +193,24 @@
                     <view key="view" contentMode="scaleToFill" id="EWk-No-O0x">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="EcX-9x-C9L">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <animations/>
+                            </mapView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="EcX-9x-C9L" secondAttribute="trailing" constant="-20" id="GuD-nW-5ks"/>
+                            <constraint firstItem="EcX-9x-C9L" firstAttribute="top" secondItem="rJB-fT-Tff" secondAttribute="bottom" id="aiT-Oy-FLi"/>
+                            <constraint firstItem="EcX-9x-C9L" firstAttribute="leading" secondItem="EWk-No-O0x" secondAttribute="leadingMargin" constant="-20" id="iZx-wT-rTn"/>
+                            <constraint firstItem="lZQ-G4-d9q" firstAttribute="top" secondItem="EcX-9x-C9L" secondAttribute="bottom" id="kw6-Je-iL8"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" id="Rwz-xH-mi0"/>
                     <connections>
+                        <outlet property="mapView" destination="EcX-9x-C9L" id="D23-ol-cqq"/>
                         <segue destination="I0o-H9-qAA" kind="show" identifier="goToPostInformationViewController" id="90V-K2-U2x"/>
                     </connections>
                 </viewController>
