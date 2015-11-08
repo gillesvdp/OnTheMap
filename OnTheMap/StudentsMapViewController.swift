@@ -11,14 +11,26 @@ import MapKit
 
 class StudentsMapViewController: UIViewController, MKMapViewDelegate {
 
+    let parseApi = ParseAPI()
     
     @IBOutlet weak var mapView: MKMapView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let locations = hardCodedLocationData()
+        
+        parseApi.getStudentLocations { (success, studentInfo100, errorString) -> Void in
+            if success {
+                print("Got the student locations")
+                self.displayStudentInfo100OnMap(studentInfo100!)
+            } else {
+                print(errorString)
+            }
+        }
+    }
+    
+    func displayStudentInfo100OnMap(studentInfo100: [[String: AnyObject]]) {
+        let locations = studentInfo100
         var annotations = [MKPointAnnotation]()
         
         for dictionary in locations {
@@ -35,7 +47,7 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
             annotation.coordinate = coordinate
             annotation.title = "\(first) \(last)"
             annotation.subtitle = mediaURL
-        
+            
             annotations.append(annotation)
         }
         self.mapView.addAnnotations(annotations)

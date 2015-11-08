@@ -24,6 +24,7 @@
 		980AF70A1BEA4F5400E2775B /* UdacityAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980AF7091BEA4F5400E2775B /* UdacityAPI.swift */; };
 		980AF70D1BEA734200E2775B /* ParsingJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980AF70C1BEA734200E2775B /* ParsingJSON.swift */; };
 		98B293D71BEE2A4A0068367D /* TapBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B293D61BEE2A4A0068367D /* TapBarViewController.swift */; };
+		98B293D91BEF4F000068367D /* ParseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B293D81BEF4F000068367D /* ParseAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		980AF7091BEA4F5400E2775B /* UdacityAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityAPI.swift; sourceTree = "<group>"; };
 		980AF70C1BEA734200E2775B /* ParsingJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsingJSON.swift; sourceTree = "<group>"; };
 		98B293D61BEE2A4A0068367D /* TapBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapBarViewController.swift; sourceTree = "<group>"; };
+		98B293D81BEF4F000068367D /* ParseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				980AF7091BEA4F5400E2775B /* UdacityAPI.swift */,
+				98B293D81BEF4F000068367D /* ParseAPI.swift */,
 				980AF70C1BEA734200E2775B /* ParsingJSON.swift */,
 			);
 			name = APIs;
@@ -313,6 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98B293D91BEF4F000068367D /* ParseAPI.swift in Sources */,
 				980AF6D31BEA2D2600E2775B /* OnTheMap.xcdatamodeld in Sources */,
 				980AF7011BEA318100E2775B /* PostInformationViewController.swift in Sources */,
 				980AF70D1BEA734200E2775B /* ParsingJSON.swift in Sources */,

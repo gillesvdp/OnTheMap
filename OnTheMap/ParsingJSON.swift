@@ -32,24 +32,40 @@ class ParsingJSON {
             
             let parsedResult: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
             
-            if let firstName = parsedResult!["user"]!!["first_name"] as? String {
-                if let lastName = parsedResult!["user"]!!["last_name"] as? String {
-                    
-                    let firstName = parsedResult!["user"]!!["first_name"] as! String
-                    let lastName = parsedResult!["user"]!!["last_name"] as! String
-                    let fullName = firstName + " " + lastName
-                    defaults.setValue(fullName, forKey: "userFullName")
-                    completionHandler(success: true, errorString: nil)
-                } else {
-                    // Could parse the first name but not the last name
-                    completionHandler(success: false, errorString: "Try again or Contact the system administrator")
-                }
-            } else {
-                // Could not parse the first name
-                completionHandler(success: false, errorString: "Try again or Contact the system administrator")
+            let firstName = parsedResult!["user"]!!["first_name"] as! String
+            let lastName = parsedResult!["user"]!!["last_name"] as! String
+            let fullName = firstName + " " + lastName
+            defaults.setValue(fullName, forKey: "userFullName")
+            completionHandler(success: true, errorString: nil)
+    }
+    
+    func studentInfo100(data: NSData,
+        completionHandler: (success: Bool, studentInfo100: [[String: AnyObject]]?, errorString: String?) -> Void) {
+    
+            let parsedResult: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
+            
+            var studentInfo100 = [[String: AnyObject]]()
+            
+            var x = 0
+            while x < 100 {
+                let firstName = parsedResult!["results"]!![x]!["firstName"]!
+                let lastName = parsedResult!["results"]!![x]!["lastName"]!
+                let latitude = parsedResult!["results"]!![x]!["latitude"]!
+                let longitude = parsedResult!["results"]!![x]!["longitude"]!
+                let mapString = parsedResult!["results"]!![x]!["mapString"]!
+                let mediaURL = parsedResult!["results"]!![x]!["mediaURL"]!
+                
+                let studentInfo:[String: AnyObject] = ["firstName": firstName!, "lastName": lastName!, "latitude": latitude!, "longitude": longitude!, "mapString": mapString!, "mediaURL": mediaURL!]
+                
+                studentInfo100.append(studentInfo)
+                
+                x += 1
             }
             
-
+            defaults.setObject(studentInfo100, forKey: "studentInfo100")
+            completionHandler(success: true, studentInfo100: studentInfo100, errorString: nil)
+            
     }
+
 }
 
