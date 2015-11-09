@@ -24,6 +24,7 @@
 		980AF70A1BEA4F5400E2775B /* UdacityAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980AF7091BEA4F5400E2775B /* UdacityAPI.swift */; };
 		980AF70D1BEA734200E2775B /* ParsingJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980AF70C1BEA734200E2775B /* ParsingJSON.swift */; };
 		984C7FB21BF09E9B004F6BBC /* StudentInfoStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984C7FB11BF09E9B004F6BBC /* StudentInfoStruct.swift */; };
+		984C7FB41BF0AD05004F6BBC /* DataBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984C7FB31BF0AD05004F6BBC /* DataBuffer.swift */; };
 		98B293D71BEE2A4A0068367D /* TapBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B293D61BEE2A4A0068367D /* TapBarViewController.swift */; };
 		98B293D91BEF4F000068367D /* ParseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B293D81BEF4F000068367D /* ParseAPI.swift */; };
 /* End PBXBuildFile section */
@@ -69,6 +70,7 @@
 		980AF7091BEA4F5400E2775B /* UdacityAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityAPI.swift; sourceTree = "<group>"; };
 		980AF70C1BEA734200E2775B /* ParsingJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsingJSON.swift; sourceTree = "<group>"; };
 		984C7FB11BF09E9B004F6BBC /* StudentInfoStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInfoStruct.swift; sourceTree = "<group>"; };
+		984C7FB31BF0AD05004F6BBC /* DataBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBuffer.swift; sourceTree = "<group>"; };
 		98B293D61BEE2A4A0068367D /* TapBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapBarViewController.swift; sourceTree = "<group>"; };
 		98B293D81BEF4F000068367D /* ParseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +163,7 @@
 				980AF6FE1BEA316100E2775B /* StudentsTableViewController.swift */,
 				980AF7001BEA318100E2775B /* PostInformationViewController.swift */,
 				984C7FB11BF09E9B004F6BBC /* StudentInfoStruct.swift */,
+				984C7FB31BF0AD05004F6BBC /* DataBuffer.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				980AF6FF1BEA316100E2775B /* StudentsTableViewController.swift in Sources */,
 				984C7FB21BF09E9B004F6BBC /* StudentInfoStruct.swift in Sources */,
 				98B293D71BEE2A4A0068367D /* TapBarViewController.swift in Sources */,
+				984C7FB41BF0AD05004F6BBC /* DataBuffer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -46,9 +46,11 @@ class ParsingJSON {
             let parsedResult: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
             
             var studentInfo100 = [[String: AnyObject]]()
+            var studentInfo100SystemB = [StudentInfo]()
             
             var x = 0
             while x < 100 {
+                
                 let firstName = parsedResult!["results"]!![x]!["firstName"]!
                 let lastName = parsedResult!["results"]!![x]!["lastName"]!
                 let latitude = parsedResult!["results"]!![x]!["latitude"]!
@@ -57,14 +59,22 @@ class ParsingJSON {
                 let mediaURL = parsedResult!["results"]!![x]!["mediaURL"]!
 
                 
-                let studentInfo:[String: AnyObject] = ["firstName": firstName!, "lastName": lastName!, "latitude": latitude!, "longitude": longitude!, "mapString": mapString!, "mediaURL": mediaURL!]
+                let studentInfo = ["firstName": firstName!, "lastName": lastName!, "latitude": latitude!, "longitude": longitude!, "mapString": mapString!, "mediaURL": mediaURL!]
+                let studentInfoSystemB = StudentInfo(initDictionary: studentInfo)
                 
                 studentInfo100.append(studentInfo)
+                studentInfo100SystemB.append(studentInfoSystemB)
                 
                 x += 1
             }
-            
+            // Using NSUserDefaults
             defaults.setObject(studentInfo100, forKey: "studentInfo100")
+            
+            // Using Singleton (not main data system in the app yet)
+            let dataBuffer = DataBuffer()
+            dataBuffer.studentsInfo = studentInfo100SystemB
+            print(dataBuffer.studentsInfo)
+            
             completionHandler(success: true, errorString: nil)
             
     }

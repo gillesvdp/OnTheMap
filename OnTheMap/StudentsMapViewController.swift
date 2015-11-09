@@ -18,6 +18,7 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         
         parseApi.getStudentLocations { (success, errorString) -> Void in
             
