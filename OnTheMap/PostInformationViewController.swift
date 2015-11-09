@@ -26,7 +26,7 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
     var mediaURL = String()
     
     @IBOutlet weak var mapView: MKMapView!
-    
+    @IBOutlet weak var activityIndicatorOutlet: UIActivityIndicatorView!
     @IBOutlet weak var topViewOutlet: UIView!
     @IBOutlet weak var centerViewOutlet: UILabel!
     @IBOutlet weak var bottomViewOutlet: UIView!
@@ -39,33 +39,36 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var bottomViewButtonOutlet: UIButton!
     
     @IBAction func bottomViewButtonPressed(sender: AnyObject) {
-        print(1)
         if bottomViewButtonOutlet.currentTitle == bottomViewButtonText1 {
-            print(2)
+            activityIndicatorOutlet.startAnimating()
+            defreezeScreen(false)
             
             // Looking for a location
             var location = centerViewTextFieldOutlet.text
             var geocoder = CLGeocoder()
         
             geocoder.geocodeAddressString(location!,
-                completionHandler: {(places: [CLPlacemark]?, error: NSError?) -> Void in
+                completionHandler: {(places: [CLPlacemark]?, geocodingError: NSError?) -> Void in
                 
                     dispatch_async(dispatch_get_main_queue(), {
-                        if let error = error {
+                        self.activityIndicatorOutlet.stopAnimating()
+                        self.defreezeScreen(true)
+                        
+                        if let error = geocodingError {
                             self.displayAlertController("Try again by typing the name of a City, State, or Country.")
-                            
+                        
                         } else {
                             self.places = places!
+                            print("Location info:")
                             print(places![0].locality!)
                             print(places![0].country!)
                             print(places![0].location!.coordinate.latitude)
                             print(places![0].location!.coordinate.longitude)
                             
-                            // Updating the screen
                             self.topViewLabelOutlet.text = self.topViewLabelText2
                             self.topViewTextFieldOutlet.hidden = false
                             self.centerViewTextFieldOutlet.hidden = true
-                            self.mapView.centerCoordinate = places![0].location!.coordinate
+                            self.mapView.setRegion(MKCoordinateRegionMakeWithDistance(places![0].location!.coordinate, 30000, 30000), animated: true)
                             
                             let annotation = MKPointAnnotation()
                             annotation.coordinate = places![0].location!.coordinate
@@ -188,6 +191,12 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
         centerViewTextFieldOutlet.hidden = false
         centerViewTextFieldOutlet.text = centerTextFieldText1
         bottomViewButtonOutlet.setTitle(bottomViewButtonText1, forState: .Normal)
+        activityIndicatorOutlet.stopAnimating()
+    }
+    
+    func defreezeScreen(variable: Bool){
+        bottomViewButtonOutlet.enabled = variable
+        centerViewTextFieldOutlet.enabled = variable
     }
     
     override func viewDidLoad() {

@@ -201,7 +201,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="EcX-9x-C9L">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="EcX-9x-C9L">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <animations/>
                             </mapView>
@@ -236,7 +236,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="RRs-V4-wC9" detailTextLabel="d0f-cP-sS3" style="IBUITableViewCellStyleSubtitle" id="Qqc-Er-iHA">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qqc-Er-iHA" id="Lve-B7-K41">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -384,6 +384,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                         <animations/>
                                     </mapView>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="P2v-UW-mSu">
+                                        <rect key="frame" x="290" y="140" width="20" height="20"/>
+                                        <animations/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -391,10 +395,12 @@
                                     <constraint firstAttribute="trailing" secondItem="BCU-tB-Mc0" secondAttribute="trailing" id="05U-X8-NT5"/>
                                     <constraint firstAttribute="trailing" secondItem="45T-zU-2If" secondAttribute="trailing" id="85f-dG-VPg"/>
                                     <constraint firstItem="45T-zU-2If" firstAttribute="top" secondItem="Cfu-qZ-Zz2" secondAttribute="top" constant="50" id="Aru-5R-G8L"/>
+                                    <constraint firstItem="P2v-UW-mSu" firstAttribute="centerX" secondItem="Cfu-qZ-Zz2" secondAttribute="centerX" id="Wpf-CR-Jer"/>
                                     <constraint firstItem="45T-zU-2If" firstAttribute="centerX" secondItem="Cfu-qZ-Zz2" secondAttribute="centerX" id="YQj-Bb-w4F"/>
                                     <constraint firstItem="BCU-tB-Mc0" firstAttribute="leading" secondItem="Cfu-qZ-Zz2" secondAttribute="leading" id="cpm-m0-Iqa"/>
                                     <constraint firstAttribute="bottom" secondItem="BCU-tB-Mc0" secondAttribute="bottom" id="hAa-2N-Ect"/>
                                     <constraint firstItem="BCU-tB-Mc0" firstAttribute="top" secondItem="Cfu-qZ-Zz2" secondAttribute="top" id="jpx-3H-rW0"/>
+                                    <constraint firstItem="P2v-UW-mSu" firstAttribute="centerY" secondItem="Cfu-qZ-Zz2" secondAttribute="centerY" id="mH3-An-xgO"/>
                                     <constraint firstItem="45T-zU-2If" firstAttribute="leading" secondItem="Cfu-qZ-Zz2" secondAttribute="leading" id="xeF-fO-aH7"/>
                                 </constraints>
                             </view>
@@ -415,6 +421,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorOutlet" destination="P2v-UW-mSu" id="kcA-Om-OEu"/>
                         <outlet property="bottomViewButtonOutlet" destination="OUm-Cn-sTH" id="xf4-0I-E7e"/>
                         <outlet property="bottomViewOutlet" destination="U71-xi-OBe" id="rEI-1X-zb1"/>
                         <outlet property="cancelButtonOutlet" destination="gmR-tB-3sU" id="BiL-pj-2Lk"/>

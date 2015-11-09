@@ -55,6 +55,7 @@ class ParsingJSON {
                 let longitude = parsedResult!["results"]!![x]!["longitude"]!
                 let mapString = parsedResult!["results"]!![x]!["mapString"]!
                 let mediaURL = parsedResult!["results"]!![x]!["mediaURL"]!
+
                 
                 let studentInfo:[String: AnyObject] = ["firstName": firstName!, "lastName": lastName!, "latitude": latitude!, "longitude": longitude!, "mapString": mapString!, "mediaURL": mediaURL!]
                 

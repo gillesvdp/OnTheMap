@@ -67,7 +67,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signupButtonPressed(sender: AnyObject) {
-        // Go to sign-up page of Udacity in Safari
         UIApplication.sharedApplication().openURL(NSURL(string:"https://www.udacity.com/account/auth#!/signup")!)
     }
     
