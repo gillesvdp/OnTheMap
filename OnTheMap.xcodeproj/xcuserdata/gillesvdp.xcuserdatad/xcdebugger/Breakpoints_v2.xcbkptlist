@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/StudentInfoStruct.swift"
-            timestampString = "468754320.211478"
+            timestampString = "468756023.063769"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "init(initDictionary:)"
             landmarkType = "5">
          </BreakpointContent>

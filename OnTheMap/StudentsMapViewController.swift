@@ -16,7 +16,6 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

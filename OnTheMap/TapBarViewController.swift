@@ -51,7 +51,6 @@ class TapBarViewController: UITabBarController {
             if success {
                 dispatch_async(dispatch_get_main_queue(), {
                     print("refreshed screen")
-                    self.viewWillAppear(true)
                 })
             } else {
                 dispatch_async(dispatch_get_main_queue(), {
@@ -66,8 +65,5 @@ class TapBarViewController: UITabBarController {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-    }
 
 }
