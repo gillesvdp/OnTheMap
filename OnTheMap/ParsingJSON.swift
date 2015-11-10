@@ -76,7 +76,16 @@ class ParsingJSON {
             print(dataBuffer.studentsInfo)
             
             completionHandler(success: true, errorString: nil)
+    }
+    
+    func studentInfoToPost(data: [String: AnyObject],
+        completionHandler: (success: Bool, dataInJSonFormat: AnyObject, errorString: String?) -> Void) {
+            
+            let studentInfoToPostConvertedToJSON = try? NSJSONSerialization.dataWithJSONObject(data, options: NSJSONWritingOptions.PrettyPrinted)
+            
+            completionHandler(success: true, dataInJSonFormat: studentInfoToPostConvertedToJSON!, errorString: nil)
             
     }
+    
 }
 

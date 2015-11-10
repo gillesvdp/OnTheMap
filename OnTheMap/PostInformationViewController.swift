@@ -21,6 +21,7 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
     let bottomViewButtonText2 = "   Confirm   "
     
     var parseApi = ParseAPI()
+    var parsingJson = ParsingJSON()
     var defaults = NSUserDefaults()
     var places = [CLPlacemark]()
     var mediaURL = String()
@@ -44,20 +45,25 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
             defreezeScreen(false)
             
             // Looking for a location
-            var location = centerViewTextFieldOutlet.text
-            var geocoder = CLGeocoder()
-        
+            let location = centerViewTextFieldOutlet.text
+            let geocoder = CLGeocoder()
+            
             geocoder.geocodeAddressString(location!,
                 completionHandler: {(places: [CLPlacemark]?, geocodingError: NSError?) -> Void in
                 
+                    
                     dispatch_async(dispatch_get_main_queue(), {
+                        
                         self.activityIndicatorOutlet.stopAnimating()
                         self.defreezeScreen(true)
                         
                         if let error = geocodingError {
                             self.displayAlertController("Try again by typing the name of a City, State, or Country.")
-                        
+                            
                         } else {
+                            
+                            self.activityIndicatorOutlet.stopAnimating()
+                            self.defreezeScreen(true)
                             self.places = places!
                             print("Location info:")
                             print(places![0].locality!)
@@ -79,7 +85,6 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
                             self.mapView.hidden = false
                             self.changeLocationButtunOutlet.hidden = false
                             self.bottomViewButtonOutlet.setTitle(self.bottomViewButtonText2, forState: .Normal)
-                            
                         }
                     })
             })
@@ -98,7 +103,7 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
                 let latitude = places[0].location!.coordinate.latitude
                 let longitude = places[0].location!.coordinate.longitude
 
-                var studentInfoToPost = [
+                let studentInfoToPost = [
                     "uniqueKey": uniqueKey,
                     "firstName": firstName,
                     "lastName" : lastName,
@@ -107,25 +112,27 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
                     "latitude" : latitude,
                     "longitude": longitude
                 ]
-            
-                print(studentInfoToPost)
-            
-                let studentInfoToPostConvertedToJSON = try? NSJSONSerialization.dataWithJSONObject(studentInfoToPost, options: NSJSONWritingOptions.PrettyPrinted)
-            
-                parseApi.postStudentLocation(studentInfoToPostConvertedToJSON!,
-                    completionHandler: {(success, errorString) -> Void in
+                
+                parsingJson.studentInfoToPost(studentInfoToPost,
+                    completionHandler: {(success, dataInJsonFormat, errorString) -> Void in
                     
-                        dispatch_async(dispatch_get_main_queue(), {
-                            if success {
-                                self.performSegueWithIdentifier("backToNavigationView", sender: self)
-                            } else {
-                                self.displayAlertController("Connectivity error: try again")
-                            }
+                        
+                        self.parseApi.postStudentLocation(dataInJsonFormat as! NSData,
+                            completionHandler: {(success, errorString) -> Void in
+                                
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    if success {
+                                        self.performSegueWithIdentifier("backToNavigationView", sender: self)
+                                    } else {
+                                        self.displayAlertController("Connectivity error: try again")
+                                    }
+                                })
                         })
-                    })
+                })
             }
         }
     }
+                        
     
     
     @IBAction func changeLocationButtonPressed(sender: AnyObject) {
