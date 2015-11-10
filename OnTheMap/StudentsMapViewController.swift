@@ -29,7 +29,7 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
                 })
             } else {
                 dispatch_async(dispatch_get_main_queue(), {
-                    print(errorString)
+                    self.displayAlertController(errorString!)
                 })
             }
         }
@@ -89,4 +89,11 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
+    
+    func displayAlertController(errorString: String) {
+        let errorAlert = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+        errorAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(errorAlert, animated: true, completion: nil)
+    }
+    
 }

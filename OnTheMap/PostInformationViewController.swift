@@ -58,14 +58,15 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
                         self.defreezeScreen(true)
                         
                         if let _ = geocodingError {
+                            
                             self.displayAlertController("Try again by typing the name of a City, State, or Country.")
                             
                         } else {
-                            
+
                             self.activityIndicatorOutlet.stopAnimating()
                             self.defreezeScreen(true)
                             self.places = places!
-                                                        
+                            
                             self.topViewLabelOutlet.text = self.topViewLabelText2
                             self.topViewTextFieldOutlet.hidden = false
                             self.centerViewTextFieldOutlet.hidden = true
