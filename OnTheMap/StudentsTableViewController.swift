@@ -29,9 +29,6 @@ class StudentsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-
-        
-        // cell.imageView?.image = UIImage(named: "pin")
         
         let firstName = studentInfo100[indexPath.row]["firstName"] as! String
         let lastName = studentInfo100[indexPath.row]["lastName"] as! String

@@ -83,6 +83,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         emailUITextFieldOutlet.attributedPlaceholder = NSAttributedString(string: emailUITextFieldOutlet.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
         passwordUITextFieldOutlet.attributedPlaceholder = NSAttributedString(string: passwordUITextFieldOutlet.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
         
+        
+        emailUITextFieldOutlet.delegate = self
+        passwordUITextFieldOutlet.delegate = self
+        emailUITextFieldOutlet.clearButtonMode = .WhileEditing
+        passwordUITextFieldOutlet.clearButtonMode = .WhileEditing
+        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -98,8 +104,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // Screen behavior
     
     func defreezeScreen(variable: Bool){
-        emailUITextFieldOutlet.delegate = self
-        passwordUITextFieldOutlet.delegate = self
         emailUITextFieldOutlet.enabled = variable
         passwordUITextFieldOutlet.enabled = variable
         loginButtonOutlet.enabled = variable

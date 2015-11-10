@@ -34,7 +34,7 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cancelButtonOutlet: UIButton!
     @IBOutlet weak var topViewLabelOutlet: UILabel!
     @IBOutlet weak var topViewTextFieldOutlet: UITextField!
-    
+    @IBOutlet weak var checkLinkButtonOutlet: UIButton!
     @IBOutlet weak var centerViewTextFieldOutlet: UITextField!
     @IBOutlet weak var bottomViewButtonOutlet: UIButton!
     
@@ -77,9 +77,9 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
                             self.mapView.addAnnotation(annotation)
                             
                             self.mapView.hidden = false
+                            self.changeLocationButtunOutlet.hidden = false
                             self.bottomViewButtonOutlet.setTitle(self.bottomViewButtonText2, forState: .Normal)
                             
-                            self.changeLocationButtunOutlet.hidden = false
                         }
                     })
             })
@@ -138,8 +138,15 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
         performSegueWithIdentifier("backToNavigationView", sender: self)
     }
     
+    
+    @IBAction func checkLinkButtonPressed(sender: AnyObject) {
+        UIApplication.sharedApplication().openURL(NSURL(string: topViewTextFieldOutlet.text!)!)
+    }
+    
+    
     func textFieldDidBeginEditing(var textField: UITextField) {
         if textField == topViewTextFieldOutlet {
+            checkLinkButtonOutlet.hidden = true
             if textField.text == topTextFieldText1 {
                 textField.text = "http://www."
             }
@@ -153,11 +160,13 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(textField: UITextField) {
         if textField == topViewTextFieldOutlet {
-            if textField.text == "http://www." {
+            checkLinkButtonOutlet.hidden = false
+            if textField.text == "http://www." || textField.text == "" {
                 textField.text = topTextFieldText1
             }
         }
-        if textField == centerViewTextFieldOutlet {
+        
+        if textField.text == centerTextFieldText1 {
             if textField.text == "" {
                 textField.text = centerTextFieldText1
             }
@@ -187,6 +196,7 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
         topViewLabelOutlet.text = topViewLabelText1
         topViewTextFieldOutlet.hidden = true
         topViewTextFieldOutlet.text = topTextFieldText1
+        checkLinkButtonOutlet.hidden = true
         
         centerViewTextFieldOutlet.hidden = false
         centerViewTextFieldOutlet.text = centerTextFieldText1

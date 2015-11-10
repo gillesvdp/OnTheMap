@@ -201,7 +201,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="EcX-9x-C9L">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="EcX-9x-C9L">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <animations/>
                             </mapView>
@@ -236,7 +236,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="RRs-V4-wC9" detailTextLabel="d0f-cP-sS3" style="IBUITableViewCellStyleSubtitle" id="Qqc-Er-iHA">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qqc-Er-iHA" id="Lve-B7-K41">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -315,36 +315,62 @@
                                         <rect key="frame" x="0.0" y="128.5" width="600" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qcq-Yk-N90">
-                                        <rect key="frame" x="20" y="20" width="171" height="30"/>
+                                        <rect key="frame" x="20" y="20" width="110" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
-                                        <state key="normal" title="Search for a new location">
+                                        <state key="normal" title="Change location">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="changeLocationButtonPressed:" destination="I0o-H9-qAA" eventType="touchUpInside" id="KZK-zb-ojG"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ols-qE-oyJ">
+                                        <rect key="frame" x="571" y="133.5" width="21" height="20"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="21" id="g0H-dA-zeo"/>
+                                            <constraint firstAttribute="height" constant="20" id="hly-Fs-9tn"/>
+                                        </constraints>
+                                        <state key="normal" image="checkLink">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="checkLinkButtonPressed:" destination="I0o-H9-qAA" eventType="touchUpInside" id="aVp-Xn-zeP"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" red="0.46166360378265381" green="0.56041556596755981" blue="0.90887552499771118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Ols-qE-oyJ" firstAttribute="top" secondItem="BsZ-xs-VNe" secondAttribute="bottom" constant="4" id="0cH-4P-g7v"/>
                                     <constraint firstAttribute="trailing" secondItem="KAJ-e7-HqS" secondAttribute="trailing" constant="20" id="8Lm-oN-vaZ"/>
                                     <constraint firstAttribute="height" constant="200" id="F4c-Rd-YAa"/>
+                                    <constraint firstItem="Ols-qE-oyJ" firstAttribute="centerY" secondItem="BsZ-xs-VNe" secondAttribute="centerY" id="OHv-PV-RKA"/>
                                     <constraint firstItem="KAJ-e7-HqS" firstAttribute="centerX" secondItem="CfC-BL-EtQ" secondAttribute="centerX" id="QkN-Ss-LlH"/>
                                     <constraint firstItem="Qcq-Yk-N90" firstAttribute="top" secondItem="CfC-BL-EtQ" secondAttribute="top" constant="20" id="U85-Ir-7RI"/>
                                     <constraint firstItem="BsZ-xs-VNe" firstAttribute="top" secondItem="KAJ-e7-HqS" secondAttribute="bottom" constant="25" id="V8d-4Q-3cW"/>
                                     <constraint firstAttribute="trailing" secondItem="BsZ-xs-VNe" secondAttribute="trailing" id="Wpj-9r-uXu"/>
                                     <constraint firstAttribute="trailing" secondItem="gmR-tB-3sU" secondAttribute="trailing" constant="20" id="alN-jI-CXa"/>
                                     <constraint firstItem="BsZ-xs-VNe" firstAttribute="leading" secondItem="CfC-BL-EtQ" secondAttribute="leading" id="lpy-w5-eEP"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ols-qE-oyJ" secondAttribute="trailing" constant="8" id="ogl-ep-XZU"/>
                                     <constraint firstItem="gmR-tB-3sU" firstAttribute="top" secondItem="CfC-BL-EtQ" secondAttribute="top" constant="20" id="qIX-rh-RC2"/>
+                                    <constraint firstItem="Ols-qE-oyJ" firstAttribute="centerX" secondItem="CfC-BL-EtQ" secondAttribute="centerX" id="qmP-ec-Pet"/>
+                                    <constraint firstItem="Ols-qE-oyJ" firstAttribute="trailing" secondItem="CfC-BL-EtQ" secondAttribute="trailingMargin" id="sUf-Ix-7fa"/>
                                     <constraint firstItem="KAJ-e7-HqS" firstAttribute="top" secondItem="CfC-BL-EtQ" secondAttribute="top" constant="80" id="vRO-OV-gdb"/>
                                     <constraint firstItem="KAJ-e7-HqS" firstAttribute="leading" secondItem="CfC-BL-EtQ" secondAttribute="leading" constant="20" id="xYq-L6-YzY"/>
                                     <constraint firstItem="Qcq-Yk-N90" firstAttribute="leading" secondItem="CfC-BL-EtQ" secondAttribute="leading" constant="20" id="yf0-eT-PFM"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0cH-4P-g7v"/>
+                                        <exclude reference="qmP-ec-Pet"/>
+                                        <exclude reference="sUf-Ix-7fa"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U71-xi-OBe">
                                 <rect key="frame" x="0.0" y="500" width="600" height="100"/>
@@ -428,6 +454,7 @@
                         <outlet property="centerViewOutlet" destination="KAJ-e7-HqS" id="9EF-7b-kAS"/>
                         <outlet property="centerViewTextFieldOutlet" destination="45T-zU-2If" id="SvL-1u-VW3"/>
                         <outlet property="changeLocationButtunOutlet" destination="Qcq-Yk-N90" id="Pre-Z4-7WZ"/>
+                        <outlet property="checkLinkButtonOutlet" destination="Ols-qE-oyJ" id="1V6-cw-GUV"/>
                         <outlet property="mapView" destination="BCU-tB-Mc0" id="YmK-7b-NwU"/>
                         <outlet property="topViewLabelOutlet" destination="KAJ-e7-HqS" id="FsS-mK-Rnn"/>
                         <outlet property="topViewOutlet" destination="CfC-BL-EtQ" id="IXP-Kf-AJh"/>
@@ -490,6 +517,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkLink" width="100" height="100"/>
         <image name="list" width="32" height="32"/>
         <image name="map" width="32" height="32"/>
         <image name="pin" width="32" height="32"/>
