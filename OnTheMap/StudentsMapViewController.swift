@@ -19,6 +19,7 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "dataWasRefreshed", name: "dataRefreshed", object: nil)
         
         parseApi.getStudentLocations { (success, errorString) -> Void in
             
@@ -32,6 +33,10 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
                 })
             }
         }
+    }
+    
+    func dataWasRefreshed() {
+        displayStudentInfo100OnMap()
     }
     
     func displayStudentInfo100OnMap() {

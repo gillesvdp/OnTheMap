@@ -29,7 +29,7 @@ class UdacityAPI {
             data, response, downloadError in
             
             // Checking for connection errors
-            if let error = downloadError {
+            if let _ = downloadError {
                 completionHandler(success: false, errorString: "Connectivity error: try again")
             
             // There was no connectivity issue, the data received will be checked.
@@ -55,7 +55,7 @@ class UdacityAPI {
             let task = session.dataTaskWithRequest(request) {
                 data, response, downloadError in
                 
-                if let error = downloadError {
+                if let _ = downloadError {
                     completionHandler(success: false, errorString: "Connectivity error: try again")
                     
                 } else {
@@ -89,7 +89,7 @@ class UdacityAPI {
         let task = session.dataTaskWithRequest(request) {
             data, response, downloadError in
             
-            if let error = downloadError {
+            if let _ = downloadError {
                 completionHandler(success: false, errorString: "Connectivity error: try again")
                 
             } else {

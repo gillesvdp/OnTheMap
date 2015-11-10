@@ -16,6 +16,11 @@ class StudentsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         studentInfo100 = defaults.valueForKey("studentInfo100") as! [[String: AnyObject]]
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "dataWasRefreshed", name: "dataRefreshed", object: nil)
+    }
+    
+    func dataWasRefreshed() {
+        tableView.reloadData()
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

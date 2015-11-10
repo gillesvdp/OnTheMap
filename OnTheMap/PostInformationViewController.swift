@@ -57,7 +57,7 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
                         self.activityIndicatorOutlet.stopAnimating()
                         self.defreezeScreen(true)
                         
-                        if let error = geocodingError {
+                        if let _ = geocodingError {
                             self.displayAlertController("Try again by typing the name of a City, State, or Country.")
                             
                         } else {
@@ -65,12 +65,7 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
                             self.activityIndicatorOutlet.stopAnimating()
                             self.defreezeScreen(true)
                             self.places = places!
-                            print("Location info:")
-                            print(places![0].locality!)
-                            print(places![0].country!)
-                            print(places![0].location!.coordinate.latitude)
-                            print(places![0].location!.coordinate.longitude)
-                            
+                                                        
                             self.topViewLabelOutlet.text = self.topViewLabelText2
                             self.topViewTextFieldOutlet.hidden = false
                             self.centerViewTextFieldOutlet.hidden = true
@@ -151,7 +146,7 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    func textFieldDidBeginEditing(var textField: UITextField) {
+    func textFieldDidBeginEditing(textField: UITextField) {
         if textField == topViewTextFieldOutlet {
             checkLinkButtonOutlet.hidden = true
             if textField.text == topTextFieldText1 {

@@ -26,7 +26,7 @@ class ParseAPI {
         let task = session.dataTaskWithRequest(request) {
             data, response, downloadError in
             
-            if let error = downloadError { 
+            if let _ = downloadError { 
                 completionHandler(success: false, errorString: "Connectivity error: try again")
             } else {
                 self.parsingJson.studentInfo100(data!, completionHandler: completionHandler)
@@ -54,7 +54,7 @@ class ParseAPI {
         
         let task = session.dataTaskWithRequest(request) { data, response, postingError in
             
-            if let error = postingError {
+            if let _ = postingError {
                 
                 completionHandler(success: false, errorString: "Connectivity error: try again")
                 

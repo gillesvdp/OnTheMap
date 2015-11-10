@@ -17,7 +17,7 @@ class ParsingJSON {
             
             let parsedResult: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
                 
-            if let emailPwdError = parsedResult!["status"] as? Int {
+            if let _ = parsedResult!["status"] as? Int {
                 //The key "status" appears when there is an email/pwd problem
                 completionHandler(success: false, errorString: "Incorrect email or password")
                     
@@ -73,7 +73,7 @@ class ParsingJSON {
             // Using Singleton (not main data system in the app yet)
             let dataBuffer = DataBuffer()
             dataBuffer.studentsInfo = studentInfo100SystemB
-            print(dataBuffer.studentsInfo)
+            //print(dataBuffer.studentsInfo)
             
             completionHandler(success: true, errorString: nil)
     }

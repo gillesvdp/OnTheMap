@@ -23,7 +23,7 @@ class TapBarViewController: UITabBarController {
             
             self.logOutButtonOutlet.enabled = false
             
-            if let error = errorString {
+            if let _ = errorString {
                 // There was an error logging out
                 
             }
@@ -50,7 +50,13 @@ class TapBarViewController: UITabBarController {
             
             if success {
                 dispatch_async(dispatch_get_main_queue(), {
-                    print("refreshed screen")
+                    self.parseApi.getStudentLocations({ (success, errorString) -> Void in
+                        if let _ = errorString {
+                        } else {
+                            self.sendDataNotification("dataRefreshed")
+                        }
+                    })
+                    
                 })
             } else {
                 dispatch_async(dispatch_get_main_queue(), {
@@ -58,7 +64,10 @@ class TapBarViewController: UITabBarController {
                 })
             }
         }
-
+    }
+    
+    private func sendDataNotification(notificationName: String) {
+        NSNotificationCenter.defaultCenter().postNotificationName(notificationName, object: nil)
     }
     
     override func viewDidLoad() {

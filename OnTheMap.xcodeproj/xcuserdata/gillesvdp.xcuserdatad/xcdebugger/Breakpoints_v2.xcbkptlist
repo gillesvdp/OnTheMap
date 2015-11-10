@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/PostInformationViewController.swift"
-            timestampString = "468859165.566794"
+            timestampString = "468868546.843445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "bottomViewButtonPressed(_:)"
             landmarkType = "5">
          </BreakpointContent>
