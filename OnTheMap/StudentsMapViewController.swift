@@ -40,22 +40,22 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func displayStudentInfo100OnMap() {
-        let locations = defaults.valueForKey("studentInfo100") as! [[String: AnyObject]]
+        let locations = DataBuffer.sharedInstance.studentsInfo 
         var annotations = [MKPointAnnotation]()
         
         for dictionary in locations {
-            let lat = CLLocationDegrees(dictionary["latitude"] as! Double)
-            let long = CLLocationDegrees(dictionary["longitude"] as! Double)
+            let lat = CLLocationDegrees(dictionary.latitude! )
+            let long = CLLocationDegrees(dictionary.longitude! )
             
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
             
-            let first = dictionary["firstName"] as! String
-            let last = dictionary["lastName"] as! String
-            let mediaURL = dictionary["mediaURL"] as! String
+            let firstName = dictionary.firstName
+            let lastName = dictionary.lastName
+            let mediaURL = dictionary.mediaURL
             
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
-            annotation.title = "\(first) \(last)"
+            annotation.title = "\(firstName) \(lastName)"
             annotation.subtitle = mediaURL
             
             annotations.append(annotation)

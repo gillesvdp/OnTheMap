@@ -10,12 +10,11 @@ import UIKit
 
 class StudentsTableViewController: UITableViewController {
 
-    let defaults = NSUserDefaults()
-    var studentInfo100 = [[String: AnyObject]]()
+    var studentInfo100 = [StudentInfo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        studentInfo100 = defaults.valueForKey("studentInfo100") as! [[String: AnyObject]]
+        studentInfo100 = DataBuffer.sharedInstance.studentsInfo
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "dataWasRefreshed", name: "dataRefreshed", object: nil)
     }
     
@@ -35,19 +34,19 @@ class StudentsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         
-        let firstName = studentInfo100[indexPath.row]["firstName"] as! String
-        let lastName = studentInfo100[indexPath.row]["lastName"] as! String
+        let firstName = studentInfo100[indexPath.row].firstName
+        let lastName = studentInfo100[indexPath.row].lastName
         
-        cell.textLabel?.text = firstName + " " + lastName
-        cell.detailTextLabel?.text = studentInfo100[indexPath.row]["mapString"] as? String
+        cell.textLabel?.text = firstName! + " " + lastName!
+        cell.detailTextLabel?.text = studentInfo100[indexPath.row].mapString
         
         return cell
     }
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let studentURL = studentInfo100[indexPath.row]["mediaURL"] as! String
-        UIApplication.sharedApplication().openURL(NSURL(string: studentURL)!)
+        let studentURL = studentInfo100[indexPath.row].mediaURL
+        UIApplication.sharedApplication().openURL(NSURL(string: studentURL!)!)
         
     }
 }

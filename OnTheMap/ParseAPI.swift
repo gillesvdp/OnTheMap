@@ -10,7 +10,6 @@ import Foundation
 
 class ParseAPI {
 
-    let defaults = NSUserDefaults()
     let parsingJson = ParsingJSON()
     
     func getStudentLocations(

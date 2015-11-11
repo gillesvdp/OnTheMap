@@ -25,7 +25,7 @@ class TapBarViewController: UITabBarController {
             
             if let _ = errorString {
                 // There was an error logging out
-                
+                self.displayAlertController(errorString!)
             }
             else {
                 dispatch_async(dispatch_get_main_queue(), {
@@ -43,7 +43,6 @@ class TapBarViewController: UITabBarController {
     @IBAction func postInformationButtonPressed(sender: AnyObject) {
         performSegueWithIdentifier("goToPostInformationViewController", sender: self)
     }
-    
     
     @IBAction func refreshButtonPressed(sender: AnyObject) {
         parseApi.getStudentLocations { (success, errorString) -> Void in

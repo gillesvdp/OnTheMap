@@ -49,8 +49,7 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
             let geocoder = CLGeocoder()
             
             geocoder.geocodeAddressString(location!,
-                completionHandler: {(places: [CLPlacemark]?, geocodingError: NSError?) -> Void in
-                
+                completionHandler: {(geocodedPlaces: [CLPlacemark]?, geocodingError: NSError?) -> Void in
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         
@@ -58,24 +57,25 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
                         self.defreezeScreen(true)
                         
                         if let _ = geocodingError {
-                            
                             self.displayAlertController("Try again by typing the name of a City, State, or Country.")
                             
                         } else {
 
                             self.activityIndicatorOutlet.stopAnimating()
                             self.defreezeScreen(true)
-                            self.places = places!
+                            self.places = geocodedPlaces!
                             
                             self.topViewLabelOutlet.text = self.topViewLabelText2
                             self.topViewTextFieldOutlet.hidden = false
                             self.centerViewTextFieldOutlet.hidden = true
-                            self.mapView.setRegion(MKCoordinateRegionMakeWithDistance(places![0].location!.coordinate, 30000, 30000), animated: true)
+                            self.mapView.setRegion(MKCoordinateRegionMakeWithDistance(geocodedPlaces![0].location!.coordinate, 30000, 30000), animated: true)
                             
                             let annotation = MKPointAnnotation()
-                            annotation.coordinate = places![0].location!.coordinate
+                            annotation.coordinate = geocodedPlaces![0].location!.coordinate
                             annotation.title = (self.defaults.valueForKey("firstName")! as! String) + " " + (self.defaults.valueForKey("lastName")! as! String)
-                            annotation.subtitle = self.places[0].locality! + ", " + self.places[0].country!
+                            
+                            annotation.subtitle = self.places[0].country!
+                            
                             self.mapView.addAnnotation(annotation)
                             
                             self.mapView.hidden = false
@@ -149,7 +149,7 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(textField: UITextField) {
         if textField == topViewTextFieldOutlet {
-            checkLinkButtonOutlet.hidden = true
+            checkLinkButtonOutlet.hidden = false
             if textField.text == topTextFieldText1 {
                 textField.text = "http://www."
             }
@@ -163,7 +163,7 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(textField: UITextField) {
         if textField == topViewTextFieldOutlet {
-            checkLinkButtonOutlet.hidden = false
+            //checkLinkButtonOutlet.hidden = false
             if textField.text == "http://www." || textField.text == "" {
                 textField.text = topTextFieldText1
             }

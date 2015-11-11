@@ -10,6 +10,8 @@ import Foundation
 
 class DataBuffer {
     
+    static var sharedInstance = DataBuffer()
+    
     var studentsInfo = [StudentInfo]()
     
 }
