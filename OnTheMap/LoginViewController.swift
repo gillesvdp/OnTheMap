@@ -71,9 +71,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Instantiating the singleton
-        _ = DataBuffer()
-        _ = ConstantStrings()
         
         // Disabling the 2 UITextFields that are being used as background only
         emailBackgroundOnlyOutlet.enabled = false

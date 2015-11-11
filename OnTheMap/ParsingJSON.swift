@@ -55,6 +55,7 @@ class ParsingJSON {
             var studentInfo100 = [StudentInfo]()
             
             if let _ = parsedResult["results"]??[0]?["firstName"] {
+                
                 var x = 0
                 while x < 100 {
                     
@@ -64,7 +65,6 @@ class ParsingJSON {
                     let longitude = parsedResult["results"]!![x]!["longitude"]!
                     let mapString = parsedResult["results"]!![x]!["mapString"]!
                     let mediaURL = parsedResult["results"]!![x]!["mediaURL"]!
-                    
                     
                     let studentInfoDictionary = ["firstName": firstName!, "lastName": lastName!, "latitude": latitude!, "longitude": longitude!, "mapString": mapString!, "mediaURL": mediaURL!]
                     let studentInfo = StudentInfo(initDictionary: studentInfoDictionary)
@@ -91,7 +91,7 @@ class ParsingJSON {
                 completionHandler(success: true, dataInJSonFormat: studentInfoToPostConvertedToJSON, errorString: nil)
                 
             } catch _ as NSError {
-                completionHandler(success: false, dataInJSonFormat: nil, errorString: "Try again")
+                completionHandler(success: false, dataInJSonFormat: nil, errorString: ConstantStrings.sharedInstance.parsingError)
             }
     }
     

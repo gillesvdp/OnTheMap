@@ -12,8 +12,10 @@ class DataBuffer {
     
     static var sharedInstance = DataBuffer()
     
+    // MARK: Student information to populate the Map and the TableView
     var studentsInfo = [StudentInfo]()
     
+    // MARK: Current user information
     var currentUserKey = String()
     var currentUserFirstName = String()
     var currentUserLastName = String()
