@@ -12,7 +12,6 @@ class TapBarViewController: UITabBarController {
 
     let parseApi = ParseAPI()
     let udacityAPI = UdacityAPI()
-    let defaults = NSUserDefaults.standardUserDefaults()
 
     @IBOutlet weak var logOutButtonOutlet: UIButton!
     @IBOutlet weak var postInformationButtonOutlet: UIBarButtonItem!
@@ -29,11 +28,6 @@ class TapBarViewController: UITabBarController {
             }
             else {
                 dispatch_async(dispatch_get_main_queue(), {
-                    // Emptying NSUSerDefaults
-                    self.defaults.removeObjectForKey("userKey")
-                    self.defaults.removeObjectForKey("userFullName")
-                    
-                    // Go back to the login screen
                     self.performSegueWithIdentifier("loggedOut", sender: nil)
                 })
             }

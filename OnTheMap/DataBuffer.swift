@@ -14,4 +14,8 @@ class DataBuffer {
     
     var studentsInfo = [StudentInfo]()
     
+    var currentUserKey = String()
+    var currentUserFirstName = String()
+    var currentUserLastName = String()
+    
 }

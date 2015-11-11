@@ -22,7 +22,6 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
     
     var parseApi = ParseAPI()
     var parsingJson = ParsingJSON()
-    var defaults = NSUserDefaults()
     var places = [CLPlacemark]()
     var mediaURL = String()
     
@@ -72,7 +71,7 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
                             
                             let annotation = MKPointAnnotation()
                             annotation.coordinate = geocodedPlaces![0].location!.coordinate
-                            annotation.title = (self.defaults.valueForKey("firstName")! as! String) + " " + (self.defaults.valueForKey("lastName")! as! String)
+                            annotation.title = (DataBuffer.sharedInstance.currentUserFirstName + " " + DataBuffer.sharedInstance.currentUserLastName)
                             
                             annotation.subtitle = self.places[0].country!
                             
@@ -92,8 +91,8 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
             
                 // Posting the location
                 let uniqueKey = "1234567890" // Not actual key
-                let firstName = defaults.valueForKey("firstName")!
-                let lastName = defaults.valueForKey("lastName")!
+                let firstName = DataBuffer.sharedInstance.currentUserFirstName
+                let lastName = DataBuffer.sharedInstance.currentUserLastName
                 let mapString = places[0].locality! + ", " + places[0].country!
                 let mediaURL = topViewTextFieldOutlet.text!
                 let latitude = places[0].location!.coordinate.latitude
@@ -109,7 +108,7 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
                     "longitude": longitude
                 ]
                 
-                parsingJson.studentInfoToPost(studentInfoToPost,
+                parsingJson.studentInfoToPost(studentInfoToPost as! [String : AnyObject],
                     completionHandler: {(success, dataInJsonFormat, errorString) -> Void in
                     
                         

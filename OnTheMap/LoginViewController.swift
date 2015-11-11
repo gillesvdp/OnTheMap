@@ -21,7 +21,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // Constants and variables
     let udacityAPI = UdacityAPI()
     var appDelegate = AppDelegate()
-    let defaults = NSUserDefaults.standardUserDefaults()
     
     @IBOutlet weak var activityIndicatorOutlet: UIActivityIndicatorView!
     
@@ -46,7 +45,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func getUserFullNameAndMoveOnToTheNextScreen() {
-        self.udacityAPI.getUserFullName(self.defaults.valueForKey("userKey") as! String,
+        self.udacityAPI.getUserFullName(DataBuffer.sharedInstance.currentUserKey,
             completionHandler: { (success, errorString) -> Void in
             
                 dispatch_async(dispatch_get_main_queue(), {
@@ -72,6 +71,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Instantiating the singleton
+        _ = DataBuffer()
         
         // Disabling the 2 UITextFields that are being used as background only
         emailBackgroundOnlyOutlet.enabled = false

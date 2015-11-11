@@ -10,8 +10,6 @@ import Foundation
 
 class ParsingJSON {
 
-    let defaults = NSUserDefaults.standardUserDefaults()
-    
     func userKey(data: NSData,
         completionHandler: (success: Bool, errorString: String?) -> Void) {
             
@@ -23,7 +21,7 @@ class ParsingJSON {
                     completionHandler(success: false, errorString: "Incorrect email or password")
                     
                 } else {
-                    defaults.setValue(parsedResult["account"]!!["key"] as! String, forKey: "userKey")
+                    DataBuffer.sharedInstance.currentUserKey = parsedResult["account"]!!["key"] as! String
                     completionHandler(success: true, errorString: nil)
                 }
             } catch _ as NSError {
@@ -38,9 +36,9 @@ class ParsingJSON {
             
                 let firstName = parsedResult["user"]!!["first_name"] as! String
                 let lastName = parsedResult["user"]!!["last_name"] as! String
-                defaults.setValue(firstName, forKey: "firstName")
-                defaults.setValue(lastName, forKey: "lastName")
-            
+                DataBuffer.sharedInstance.currentUserFirstName = firstName
+                DataBuffer.sharedInstance.currentUserLastName = lastName
+                
                 completionHandler(success: true, errorString: nil)
                 
             } catch _ as NSError {
@@ -77,11 +75,9 @@ class ParsingJSON {
                     x += 1
                 }
                 
-                // Using Singleton (not main data system in the app yet)
-                _ = DataBuffer()
                 DataBuffer.sharedInstance.studentsInfo = studentInfo100
-                
                 completionHandler(success: true, errorString: nil)
+                
             } else {
                 completionHandler(success: false, errorString: "Try again or contact the support team")
             }
