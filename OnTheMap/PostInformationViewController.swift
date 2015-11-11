@@ -78,7 +78,16 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
                             let annotation = MKPointAnnotation()
                             annotation.coordinate = geocodedPlaces![0].location!.coordinate
                             annotation.title = (DataBuffer.sharedInstance.currentUserFirstName + " " + DataBuffer.sharedInstance.currentUserLastName)
-                            annotation.subtitle = self.places[0].country!
+                            
+                            if let _ = self.places[0].country {
+                                annotation.subtitle = self.places[0].country!
+                                if let _ = self.places[0].locality {
+                                    annotation.subtitle = self.places[0].locality! + ", " + self.places[0].country!
+                                } else if let _ = self.places[0].administrativeArea {
+                                    annotation.subtitle = self.places[0].administrativeArea! + ", " + self.places[0].country!
+                                }
+                            }
+                            
                             self.mapView.addAnnotation(annotation)
                             
                             self.mapView.hidden = false

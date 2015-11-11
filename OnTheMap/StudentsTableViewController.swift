@@ -10,11 +10,8 @@ import UIKit
 
 class StudentsTableViewController: UITableViewController {
 
-    var studentInfo100 = [StudentInfo]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        studentInfo100 = DataBuffer.sharedInstance.studentsInfo
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "dataWasRefreshed", name: ConstantStrings.sharedInstance.dataRefreshed, object: nil)
     }
     
@@ -27,25 +24,25 @@ class StudentsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return studentInfo100.count
+        return DataBuffer.sharedInstance.studentsInfo.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         
-        let firstName = studentInfo100[indexPath.row].firstName
-        let lastName = studentInfo100[indexPath.row].lastName
+        let firstName = DataBuffer.sharedInstance.studentsInfo[indexPath.row].firstName
+        let lastName = DataBuffer.sharedInstance.studentsInfo[indexPath.row].lastName
         
         cell.textLabel?.text = firstName! + " " + lastName!
-        cell.detailTextLabel?.text = studentInfo100[indexPath.row].mapString
+        cell.detailTextLabel?.text = DataBuffer.sharedInstance.studentsInfo[indexPath.row].mapString
         
         return cell
     }
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let studentURL = studentInfo100[indexPath.row].mediaURL
+        let studentURL = DataBuffer.sharedInstance.studentsInfo[indexPath.row].mediaURL
         UIApplication.sharedApplication().openURL(NSURL(string: studentURL!)!)
         
     }
