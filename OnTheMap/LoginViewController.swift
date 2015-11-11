@@ -45,8 +45,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     })
             })
         }
-        
-        
     }
     
     func getUserFullNameAndMoveOnToTheNextScreen() {

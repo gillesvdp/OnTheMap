@@ -78,9 +78,7 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
                             let annotation = MKPointAnnotation()
                             annotation.coordinate = geocodedPlaces![0].location!.coordinate
                             annotation.title = (DataBuffer.sharedInstance.currentUserFirstName + " " + DataBuffer.sharedInstance.currentUserLastName)
-                            
                             annotation.subtitle = self.places[0].country!
-                            
                             self.mapView.addAnnotation(annotation)
                             
                             self.mapView.hidden = false
@@ -143,8 +141,6 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-                        
-    
     
     @IBAction func changeLocationButtonPressed(sender: AnyObject) {
         self.mapView.removeAnnotations(mapView.annotations)
