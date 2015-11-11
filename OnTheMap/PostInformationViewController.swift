@@ -11,20 +11,25 @@ import MapKit
 
 class PostInformationViewController: UIViewController, UITextFieldDelegate {
 
+    // MARK: String valus for this class only
     let topViewLabelText1 = "Where are you studying today?"
     let topViewLabelText2 = "Enter a link to your profile: "
     
     let topTextFieldText1 = "http://www.yourWebsite.com"
+    let topTextFieldText1_DidBeginEditing = "http://www."
+    
     let centerTextFieldText1 = "City, Country"
     
     let bottomViewButtonText1 = "   Search   "
     let bottomViewButtonText2 = "   Confirm   "
     
+    // MARK: Variables
     var parseApi = ParseAPI()
     var parsingJson = ParsingJSON()
     var places = [CLPlacemark]()
     var mediaURL = String()
     
+    // MARK: IBOutlets
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activityIndicatorOutlet: UIActivityIndicatorView!
     @IBOutlet weak var topViewOutlet: UIView!
@@ -38,6 +43,7 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var centerViewTextFieldOutlet: UITextField!
     @IBOutlet weak var bottomViewButtonOutlet: UIButton!
     
+    // MARK: Button presses
     @IBAction func bottomViewButtonPressed(sender: AnyObject) {
         if bottomViewButtonOutlet.currentTitle == bottomViewButtonText1 {
             activityIndicatorOutlet.startAnimating()
@@ -109,20 +115,30 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
                 ]
                 
                 parsingJson.studentInfoToPost(studentInfoToPost as! [String : AnyObject],
-                    completionHandler: {(success, dataInJsonFormat, errorString) -> Void in
+                    completionHandler: {(dataInJsonFormat, errorString) -> Void in
                     
                         
-                        self.parseApi.postStudentLocation(dataInJsonFormat as! NSData,
-                            completionHandler: {(success, errorString) -> Void in
-                                
-                                dispatch_async(dispatch_get_main_queue(), {
-                                    if success {
-                                        self.performSegueWithIdentifier(ConstantStrings.sharedInstance.backToNavigationView, sender: self)
-                                    } else {
-                                        self.displayAlertController(ConstantStrings.sharedInstance.networkError)
-                                    }
-                                })
-                        })
+                        if let _ = errorString {
+                            // There is a parsing error
+                            self.displayAlertController(errorString!)
+                            
+                        } else {
+                            // There is no parsing error -> trying to post it to Parse
+                            self.parseApi.postStudentLocation(dataInJsonFormat as! NSData,
+                                completionHandler: {(errorString) -> Void in
+                                    
+                                    dispatch_async(dispatch_get_main_queue(), {
+                                        if let _ = errorString {
+                                            // Failed posting Parse
+                                            self.displayAlertController(ConstantStrings.sharedInstance.networkError)
+                                            
+                                        } else {
+                                            // Successfully posted to Parse
+                                            self.performSegueWithIdentifier(ConstantStrings.sharedInstance.backToNavigationView, sender: self)
+                                        }
+                                    })
+                            })
+                        }
                 })
             }
         }
@@ -145,12 +161,13 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
         UIApplication.sharedApplication().openURL(NSURL(string: topViewTextFieldOutlet.text!)!)
     }
     
+    // MARK: UITextFieldDelegate
     
     func textFieldDidBeginEditing(textField: UITextField) {
         if textField == topViewTextFieldOutlet {
             checkLinkButtonOutlet.hidden = false
             if textField.text == topTextFieldText1 {
-                textField.text = "http://www."
+                textField.text = topTextFieldText1_DidBeginEditing
             }
         }
         if textField == centerViewTextFieldOutlet {
@@ -163,7 +180,7 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         if textField == topViewTextFieldOutlet {
             //checkLinkButtonOutlet.hidden = false
-            if textField.text == "http://www." || textField.text == "" {
+            if textField.text == topTextFieldText1_DidBeginEditing || textField.text == "" {
                 textField.text = topTextFieldText1
             }
         }
@@ -185,6 +202,8 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
         super.touchesBegan(touches, withEvent: event)
     }
     
+    
+    // MARK: Screen behavior
     
     func displayAlertController(errorString: String) {
         let errorAlert = UIAlertController(title: ConstantStrings.sharedInstance.alertControllerTitle, message: errorString, preferredStyle: UIAlertControllerStyle.Alert)

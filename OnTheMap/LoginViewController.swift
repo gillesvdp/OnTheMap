@@ -10,58 +10,78 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
-    // IBOutlets
+    // MARK: Constants and variables
+    let udacityAPI = UdacityAPI()
+    var appDelegate = AppDelegate()
+    
+    // MARK: IBOutlets
     @IBOutlet weak var emailBackgroundOnlyOutlet: UITextField!
     @IBOutlet weak var passwordBackgroundOnlyOutlet: UITextField!
     @IBOutlet weak var emailUITextFieldOutlet: UITextField!
     @IBOutlet weak var passwordUITextFieldOutlet: UITextField!
     @IBOutlet weak var loginButtonOutlet: UIButton!
     @IBOutlet weak var signupButtonOutlet: UIButton!
-    
-    // Constants and variables
-    let udacityAPI = UdacityAPI()
-    var appDelegate = AppDelegate()
-    
     @IBOutlet weak var activityIndicatorOutlet: UIActivityIndicatorView!
     
-    // Button Actions
+    // MARK: Button Actions
     @IBAction func loginButtonPressed(sender: AnyObject) {
-        defreezeScreen(false)
-        activityIndicatorOutlet.startAnimating()
+        if textFieldsAreEmpty() {
+            displayAlertController(ConstantStrings.sharedInstance.emptyFields)
+            
+        } else {
+            defreezeScreen(false)
+            activityIndicatorOutlet.startAnimating()
+            udacityAPI.login(emailUITextFieldOutlet.text!, password: passwordUITextFieldOutlet.text!,
+                completionHandler: {(userKey, errorString) -> Void in
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        if let _ = errorString {
+                            self.endLoginProcess(errorString)
+                            
+                        } else {
+                            DataBuffer.sharedInstance.currentUserKey = userKey!
+                            self.getUserFullNameAndMoveOnToTheNextScreen()
+                        }
+                    })
+            })
+        }
         
-        // Add checks to see if the textfields are empty or not
         
-        udacityAPI.login(emailUITextFieldOutlet.text!, password: passwordUITextFieldOutlet.text!,
-            completionHandler: {(success, errorString) -> Void in
+    }
+    
+    func getUserFullNameAndMoveOnToTheNextScreen() {
+        self.udacityAPI.getUserFullName(DataBuffer.sharedInstance.currentUserKey,
+            completionHandler: { (userFirstName, userLastName, errorString) -> Void in
             
                 dispatch_async(dispatch_get_main_queue(), {
-                    if success {
-                        self.getUserFullNameAndMoveOnToTheNextScreen()
+                    if let _ = errorString {
+                        self.endLoginProcess(errorString)
                     } else {
-                        self.endLoginProcess(success, errorString: errorString)
+                        DataBuffer.sharedInstance.currentUserFirstName = userFirstName!
+                        DataBuffer.sharedInstance.currentUserLastName = userLastName!
+                        self.endLoginProcess(errorString)
                     }
                 })
         })
     }
     
-    func getUserFullNameAndMoveOnToTheNextScreen() {
-        self.udacityAPI.getUserFullName(DataBuffer.sharedInstance.currentUserKey,
-            completionHandler: { (success, errorString) -> Void in
-            
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.endLoginProcess(success, errorString: errorString)
-                })
-        })
+    func textFieldsAreEmpty() -> Bool {
+        var result = Bool()
+        if emailUITextFieldOutlet.text == "" || passwordUITextFieldOutlet.text == "" {
+            result = true
+        } else {
+            result = false
+        }
+        return result
     }
     
-    func endLoginProcess(success: Bool, errorString: String?) {
+    func endLoginProcess(errorString: String?) {
         defreezeScreen(true)
         activityIndicatorOutlet.stopAnimating()
-        if success {
-            performSegueWithIdentifier(ConstantStrings.sharedInstance.loggedInSuccessfully, sender: nil)
-            
-        } else {
+        if let _ = errorString {
             displayAlertController(errorString!)
+        } else {
+            performSegueWithIdentifier(ConstantStrings.sharedInstance.loggedInSuccessfully, sender: nil)
         }
     }
     
@@ -69,26 +89,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         UIApplication.sharedApplication().openURL(NSURL(string: ConstantStrings.sharedInstance.signUpUrl)!)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Disabling the 2 UITextFields that are being used as background only
-        emailBackgroundOnlyOutlet.enabled = false
-        passwordBackgroundOnlyOutlet.enabled = false
     
-        // Set placeholder text color to white for the 2 UITextFields
-        // Source: http://stackoverflow.com/questions/25679075/set-textfield-placeholder-color-progrmatically-in-swift
-        
-        emailUITextFieldOutlet.attributedPlaceholder = NSAttributedString(string: emailUITextFieldOutlet.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
-        passwordUITextFieldOutlet.attributedPlaceholder = NSAttributedString(string: passwordUITextFieldOutlet.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
-        
-        
-        emailUITextFieldOutlet.delegate = self
-        passwordUITextFieldOutlet.delegate = self
-        emailUITextFieldOutlet.clearButtonMode = .WhileEditing
-        passwordUITextFieldOutlet.clearButtonMode = .WhileEditing
-        
-    }
+    
+    // MARK: UITextField Delegate
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
@@ -100,7 +103,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
-    // Screen behavior
+    // MARK: Screen behavior
     
     func defreezeScreen(variable: Bool){
         emailUITextFieldOutlet.enabled = variable
@@ -113,6 +116,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let errorAlert = UIAlertController(title: ConstantStrings.sharedInstance.alertControllerTitle, message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
         errorAlert.addAction(UIAlertAction(title: ConstantStrings.sharedInstance.alertControllerOk, style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(errorAlert, animated: true, completion: nil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Disabling the 2 UITextFields that are being used as background only
+        emailBackgroundOnlyOutlet.enabled = false
+        passwordBackgroundOnlyOutlet.enabled = false
+        
+        // Set placeholder text color to white for the 2 UITextFields
+        // Source: http://stackoverflow.com/questions/25679075/set-textfield-placeholder-color-progrmatically-in-swift
+        
+        emailUITextFieldOutlet.attributedPlaceholder = NSAttributedString(string: emailUITextFieldOutlet.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        passwordUITextFieldOutlet.attributedPlaceholder = NSAttributedString(string: passwordUITextFieldOutlet.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        
+        
+        emailUITextFieldOutlet.delegate = self
+        passwordUITextFieldOutlet.delegate = self
+        emailUITextFieldOutlet.clearButtonMode = .WhileEditing
+        passwordUITextFieldOutlet.clearButtonMode = .WhileEditing
+        
     }
     
 

@@ -11,43 +11,40 @@ import Foundation
 class ParsingJSON {
 
     func userKey(data: NSData,
-        completionHandler: (success: Bool, errorString: String?) -> Void) {
+        completionHandler: (data: String?, errorString: String?) -> Void) {
             
             do {
                 let parsedResult: AnyObject = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
                 
                 if let _ = parsedResult["status"] as? Int {
                     //The key "status" appears when there is an email/pwd problem
-                    completionHandler(success: false, errorString: ConstantStrings.sharedInstance.emailPwdError)
+                    completionHandler(data: nil, errorString: ConstantStrings.sharedInstance.emailPwdError)
                     
                 } else {
-                    DataBuffer.sharedInstance.currentUserKey = parsedResult["account"]!!["key"] as! String
-                    completionHandler(success: true, errorString: nil)
+                    completionHandler(data: parsedResult["account"]!!["key"] as? String, errorString: nil)
                 }
             } catch _ as NSError {
-                completionHandler(success: false, errorString: ConstantStrings.sharedInstance.parsingError)
+                completionHandler(data: nil, errorString: ConstantStrings.sharedInstance.parsingError)
             }
     }
     
     func userFullName(data: NSData,
-        completionHandler: (success: Bool, errorString: String?) -> Void) {
+        completionHandler: (userFirstName: String?, userLastname: String?, errorString: String?) -> Void) {
             do {
                 let parsedResult: AnyObject = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
             
                 let firstName = parsedResult["user"]!!["first_name"] as! String
                 let lastName = parsedResult["user"]!!["last_name"] as! String
-                DataBuffer.sharedInstance.currentUserFirstName = firstName
-                DataBuffer.sharedInstance.currentUserLastName = lastName
                 
-                completionHandler(success: true, errorString: nil)
+                completionHandler(userFirstName: firstName, userLastname: lastName, errorString: nil)
                 
             } catch _ as NSError {
-                completionHandler(success: false, errorString: ConstantStrings.sharedInstance.parsingError)
+                completionHandler(userFirstName: nil, userLastname: nil, errorString: ConstantStrings.sharedInstance.parsingError)
             }
     }
     
     func studentInfo100(data: NSData,
-        completionHandler: (success: Bool, errorString: String?) -> Void) {
+        completionHandler: (data: [StudentInfo]?, errorString: String?) -> Void) {
     
             
             let parsedResult: AnyObject = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
@@ -74,24 +71,24 @@ class ParsingJSON {
                     x += 1
                 }
                 
-                DataBuffer.sharedInstance.studentsInfo = studentInfo100
-                completionHandler(success: true, errorString: nil)
+                completionHandler(data: studentInfo100, errorString: nil)
                 
             } else {
-                completionHandler(success: false, errorString: ConstantStrings.sharedInstance.parsingError)
+                completionHandler(data: nil, errorString: ConstantStrings.sharedInstance.parsingError)
             }
     }
     
     func studentInfoToPost(data: [String: AnyObject],
-        completionHandler: (success: Bool, dataInJSonFormat: AnyObject?, errorString: String?) -> Void) {
+        completionHandler: (dataInJSonFormat: AnyObject?, errorString: String?) -> Void) {
             
             do {
                 let studentInfoToPostConvertedToJSON = try NSJSONSerialization.dataWithJSONObject(data, options: NSJSONWritingOptions.PrettyPrinted)
                 
-                completionHandler(success: true, dataInJSonFormat: studentInfoToPostConvertedToJSON, errorString: nil)
+                completionHandler(dataInJSonFormat: studentInfoToPostConvertedToJSON, errorString: nil)
                 
             } catch _ as NSError {
-                completionHandler(success: false, dataInJSonFormat: nil, errorString: ConstantStrings.sharedInstance.parsingError)
+                
+                completionHandler(dataInJSonFormat: nil, errorString: ConstantStrings.sharedInstance.parsingError)
             }
     }
     

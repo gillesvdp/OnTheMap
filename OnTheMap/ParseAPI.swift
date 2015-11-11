@@ -13,7 +13,7 @@ class ParseAPI {
     let parsingJson = ParsingJSON()
     
     func getStudentLocations(
-        completionHandler: (success: Bool, errorString: String?) -> Void ) {
+        completionHandler: (data: [StudentInfo]?, errorString: String?) -> Void ) {
             
         let request = NSMutableURLRequest(URL: NSURL(string: ConstantStrings.sharedInstance.ParseApiBaseUrl + "?limit=100&order=-updatedAt")!)
         request.addValue(ConstantStrings.sharedInstance.ParseApplicationKey, forHTTPHeaderField: "X-Parse-Application-Id")
@@ -26,7 +26,7 @@ class ParseAPI {
             data, response, downloadError in
             
             if let _ = downloadError { 
-                completionHandler(success: false, errorString: ConstantStrings.sharedInstance.networkError)
+                completionHandler(data: nil, errorString: ConstantStrings.sharedInstance.networkError)
             } else {
                 self.parsingJson.studentInfo100(data!, completionHandler: completionHandler)
             }
@@ -35,7 +35,7 @@ class ParseAPI {
     }
     
     func postStudentLocation(studentInfoToPost: NSData,
-        completionHandler: (success: Bool, errorString: String?) -> Void) {
+        completionHandler: (errorString: String?) -> Void) {
             
         let request = NSMutableURLRequest(URL: NSURL(string: ConstantStrings.sharedInstance.ParseApiBaseUrl)!)
         
@@ -55,11 +55,11 @@ class ParseAPI {
             
             if let _ = postingError {
                 
-                completionHandler(success: false, errorString: ConstantStrings.sharedInstance.networkError)
+                completionHandler(errorString: ConstantStrings.sharedInstance.networkError)
                 
             } else {
             
-                completionHandler(success: true, errorString: nil)
+                completionHandler(errorString: nil)
             }
             
         }

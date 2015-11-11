@@ -39,24 +39,16 @@ class TapBarViewController: UITabBarController {
     }
     
     @IBAction func refreshButtonPressed(sender: AnyObject) {
-        parseApi.getStudentLocations { (success, errorString) -> Void in
+        parseApi.getStudentLocations { (data, errorString) -> Void in
             
-            if success {
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.parseApi.getStudentLocations({ (success, errorString) -> Void in
-                        if let _ = errorString {
-                            self.displayAlertController(errorString!)
-                        } else {
-                            self.sendDataNotification(ConstantStrings.sharedInstance.dataRefreshed)
-                        }
-                    })
-                    
-                })
-            } else {
-                dispatch_async(dispatch_get_main_queue(), {
-                    print(errorString)
-                })
-            }
+            dispatch_async(dispatch_get_main_queue(), {
+                if let _ = errorString {
+                    self.displayAlertController(errorString!)
+                } else {
+                    DataBuffer.sharedInstance.studentsInfo = data!
+                    self.sendDataNotification(ConstantStrings.sharedInstance.dataRefreshed)
+                }
+            })
         }
     }
     

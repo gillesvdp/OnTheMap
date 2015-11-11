@@ -35,6 +35,7 @@ class ConstantStrings {
     // MARK: Error messages
     let alertControllerTitle = "Error"
     let alertControllerOk = "Ok"
+    let emptyFields = "Please enter your email and password"
     let emailPwdError = "Incorrect email or password"
     let networkError = "Check your network connection"
     let parsingError = "Please try again or contact the support team if the error persists"

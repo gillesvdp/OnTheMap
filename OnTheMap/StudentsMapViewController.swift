@@ -21,17 +21,18 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "dataWasRefreshed", name: ConstantStrings.sharedInstance.dataRefreshed, object: nil)
         
-        parseApi.getStudentLocations { (success, errorString) -> Void in
-            
-            if success {
-                dispatch_async(dispatch_get_main_queue(), {
+        parseApi.getStudentLocations { (data, errorString) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
+                if let _ = errorString {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.displayAlertController(errorString!)
+                        
+                    })
+                } else {
+                    DataBuffer.sharedInstance.studentsInfo = data!
                     self.displayStudentInfo100OnMap()
-                })
-            } else {
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.displayAlertController(errorString!)
-                })
-            }
+                }
+            })
         }
     }
     

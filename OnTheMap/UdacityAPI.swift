@@ -14,7 +14,7 @@ class UdacityAPI {
     
     // Login
     func login(email: String, password: String,
-        completionHandler: (success: Bool, errorString: String?) -> Void ) {
+        completionHandler: (data: String?, errorString: String?) -> Void ) {
     
         let request = NSMutableURLRequest(URL: NSURL(string: ConstantStrings.sharedInstance.UdacityApiBaseUrl + "session")!)
         
@@ -30,7 +30,7 @@ class UdacityAPI {
             
             // Checking for connection errors
             if let _ = downloadError {
-                completionHandler(success: false, errorString: ConstantStrings.sharedInstance.networkError)
+                completionHandler(data: nil, errorString: ConstantStrings.sharedInstance.networkError)
             
             // There was no connectivity issue, the data received will be checked.
             } else {
@@ -44,7 +44,7 @@ class UdacityAPI {
     
     // Retrieving the user name upon successful login
     func getUserFullName(userKey: String,
-        completionHandler: (success: Bool, errorString: String?) -> Void ) {
+        completionHandler: (userFirstName: String?, userLastName: String?, errorString: String?) -> Void ) {
             
             let request = NSMutableURLRequest(URL: NSURL(string: ConstantStrings.sharedInstance.UdacityApiBaseUrl + "users/\(userKey)")!)
             
@@ -56,7 +56,7 @@ class UdacityAPI {
                 data, response, downloadError in
                 
                 if let _ = downloadError {
-                    completionHandler(success: false, errorString: ConstantStrings.sharedInstance.networkError)
+                    completionHandler(userFirstName: nil, userLastName: nil, errorString: ConstantStrings.sharedInstance.networkError)
                     
                 } else {
                     let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5))
