@@ -16,7 +16,7 @@ class UdacityAPI {
     func login(email: String, password: String,
         completionHandler: (success: Bool, errorString: String?) -> Void ) {
     
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
+        let request = NSMutableURLRequest(URL: NSURL(string: ConstantStrings.sharedInstance.UdacityApiBaseUrl + "session")!)
         
         request.HTTPMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -30,7 +30,7 @@ class UdacityAPI {
             
             // Checking for connection errors
             if let _ = downloadError {
-                completionHandler(success: false, errorString: "Connectivity error: try again")
+                completionHandler(success: false, errorString: ConstantStrings.sharedInstance.networkError)
             
             // There was no connectivity issue, the data received will be checked.
             } else {
@@ -46,7 +46,7 @@ class UdacityAPI {
     func getUserFullName(userKey: String,
         completionHandler: (success: Bool, errorString: String?) -> Void ) {
             
-            let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/users/\(userKey)")!)
+            let request = NSMutableURLRequest(URL: NSURL(string: ConstantStrings.sharedInstance.UdacityApiBaseUrl + "users/\(userKey)")!)
             
             request.HTTPMethod = "GET"
             
@@ -56,7 +56,7 @@ class UdacityAPI {
                 data, response, downloadError in
                 
                 if let _ = downloadError {
-                    completionHandler(success: false, errorString: "Connectivity error: try again")
+                    completionHandler(success: false, errorString: ConstantStrings.sharedInstance.networkError)
                     
                 } else {
                     let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5))
@@ -69,7 +69,7 @@ class UdacityAPI {
     // Logout
     func logOut(completionHandler: (success: Bool, errorString: String?) -> Void) {
         
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
+        let request = NSMutableURLRequest(URL: NSURL(string: ConstantStrings.sharedInstance.UdacityApiBaseUrl + "session")!)
         request.HTTPMethod = "DELETE"
         var xsrfCookie: NSHTTPCookie? = nil
     
@@ -90,7 +90,7 @@ class UdacityAPI {
             data, response, downloadError in
             
             if let _ = downloadError {
-                completionHandler(success: false, errorString: "Connectivity error: try again")
+                completionHandler(success: false, errorString: ConstantStrings.sharedInstance.networkError)
                 
             } else {
                 completionHandler(success: true, errorString: nil)

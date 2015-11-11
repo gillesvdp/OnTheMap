@@ -19,7 +19,7 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "dataWasRefreshed", name: "dataRefreshed", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "dataWasRefreshed", name: ConstantStrings.sharedInstance.dataRefreshed, object: nil)
         
         parseApi.getStudentLocations { (success, errorString) -> Void in
             
@@ -91,8 +91,8 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func displayAlertController(errorString: String) {
-        let errorAlert = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
-        errorAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        let errorAlert = UIAlertController(title: ConstantStrings.sharedInstance.alertControllerTitle, message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+        errorAlert.addAction(UIAlertAction(title: ConstantStrings.sharedInstance.alertControllerOk, style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(errorAlert, animated: true, completion: nil)
     }
     

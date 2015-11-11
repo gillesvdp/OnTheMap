@@ -28,14 +28,14 @@ class TapBarViewController: UITabBarController {
             }
             else {
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.performSegueWithIdentifier("loggedOut", sender: nil)
+                    self.performSegueWithIdentifier(ConstantStrings.sharedInstance.loggedOutSuccessfully, sender: nil)
                 })
             }
         }
     }
     
     @IBAction func postInformationButtonPressed(sender: AnyObject) {
-        performSegueWithIdentifier("goToPostInformationViewController", sender: self)
+        performSegueWithIdentifier(ConstantStrings.sharedInstance.goToPostInformationViewController, sender: self)
     }
     
     @IBAction func refreshButtonPressed(sender: AnyObject) {
@@ -47,7 +47,7 @@ class TapBarViewController: UITabBarController {
                         if let _ = errorString {
                             self.displayAlertController(errorString!)
                         } else {
-                            self.sendDataNotification("dataRefreshed")
+                            self.sendDataNotification(ConstantStrings.sharedInstance.dataRefreshed)
                         }
                     })
                     
@@ -69,8 +69,8 @@ class TapBarViewController: UITabBarController {
     }
     
     func displayAlertController(errorString: String) {
-        let errorAlert = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
-        errorAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        let errorAlert = UIAlertController(title: ConstantStrings.sharedInstance.alertControllerTitle, message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+        errorAlert.addAction(UIAlertAction(title: ConstantStrings.sharedInstance.alertControllerOk, style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(errorAlert, animated: true, completion: nil)
     }
 

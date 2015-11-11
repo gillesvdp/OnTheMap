@@ -25,6 +25,7 @@
 		980AF70D1BEA734200E2775B /* ParsingJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980AF70C1BEA734200E2775B /* ParsingJSON.swift */; };
 		984C7FB21BF09E9B004F6BBC /* StudentInfoStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984C7FB11BF09E9B004F6BBC /* StudentInfoStruct.swift */; };
 		984C7FB41BF0AD05004F6BBC /* DataBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984C7FB31BF0AD05004F6BBC /* DataBuffer.swift */; };
+		9868FBB91BF34F2400710F68 /* ConstantStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868FBB81BF34F2400710F68 /* ConstantStrings.swift */; };
 		98B293D71BEE2A4A0068367D /* TapBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B293D61BEE2A4A0068367D /* TapBarViewController.swift */; };
 		98B293D91BEF4F000068367D /* ParseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B293D81BEF4F000068367D /* ParseAPI.swift */; };
 /* End PBXBuildFile section */
@@ -71,6 +72,7 @@
 		980AF70C1BEA734200E2775B /* ParsingJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsingJSON.swift; sourceTree = "<group>"; };
 		984C7FB11BF09E9B004F6BBC /* StudentInfoStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInfoStruct.swift; sourceTree = "<group>"; };
 		984C7FB31BF0AD05004F6BBC /* DataBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBuffer.swift; sourceTree = "<group>"; };
+		9868FBB81BF34F2400710F68 /* ConstantStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantStrings.swift; sourceTree = "<group>"; };
 		98B293D61BEE2A4A0068367D /* TapBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapBarViewController.swift; sourceTree = "<group>"; };
 		98B293D81BEF4F000068367D /* ParseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				980AF6CA1BEA2D2600E2775B /* AppDelegate.swift */,
+				9868FBB81BF34F2400710F68 /* ConstantStrings.swift */,
 				980AF70B1BEA4F5E00E2775B /* APIs */,
 				980AF7081BEA3A9A00E2775B /* Resources */,
 				980AF6FB1BEA311900E2775B /* ViewControllers */,
@@ -334,6 +337,7 @@
 				984C7FB21BF09E9B004F6BBC /* StudentInfoStruct.swift in Sources */,
 				98B293D71BEE2A4A0068367D /* TapBarViewController.swift in Sources */,
 				984C7FB41BF0AD05004F6BBC /* DataBuffer.swift in Sources */,
+				9868FBB91BF34F2400710F68 /* ConstantStrings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

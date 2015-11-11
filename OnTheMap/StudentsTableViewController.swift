@@ -15,7 +15,7 @@ class StudentsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         studentInfo100 = DataBuffer.sharedInstance.studentsInfo
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "dataWasRefreshed", name: "dataRefreshed", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "dataWasRefreshed", name: ConstantStrings.sharedInstance.dataRefreshed, object: nil)
     }
     
     func dataWasRefreshed() {

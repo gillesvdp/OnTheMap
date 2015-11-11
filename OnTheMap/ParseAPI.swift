@@ -15,10 +15,10 @@ class ParseAPI {
     func getStudentLocations(
         completionHandler: (success: Bool, errorString: String?) -> Void ) {
             
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation?limit=100&order=-updatedAt")!)
-        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
+        let request = NSMutableURLRequest(URL: NSURL(string: ConstantStrings.sharedInstance.ParseApiBaseUrl + "?limit=100&order=-updatedAt")!)
+        request.addValue(ConstantStrings.sharedInstance.ParseApplicationKey, forHTTPHeaderField: "X-Parse-Application-Id")
         
-        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        request.addValue(ConstantStrings.sharedInstance.ParseRestApiKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
         
         let session = NSURLSession.sharedSession()
         
@@ -26,7 +26,7 @@ class ParseAPI {
             data, response, downloadError in
             
             if let _ = downloadError { 
-                completionHandler(success: false, errorString: "Connectivity error: try again")
+                completionHandler(success: false, errorString: ConstantStrings.sharedInstance.networkError)
             } else {
                 self.parsingJson.studentInfo100(data!, completionHandler: completionHandler)
             }
@@ -37,13 +37,13 @@ class ParseAPI {
     func postStudentLocation(studentInfoToPost: NSData,
         completionHandler: (success: Bool, errorString: String?) -> Void) {
             
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation")!)
+        let request = NSMutableURLRequest(URL: NSURL(string: ConstantStrings.sharedInstance.ParseApiBaseUrl)!)
         
         request.HTTPMethod = "POST"
         
-        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue(ConstantStrings.sharedInstance.ParseApplicationKey, forHTTPHeaderField: "X-Parse-Application-Id")
         
-        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        request.addValue(ConstantStrings.sharedInstance.ParseRestApiKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
@@ -55,7 +55,7 @@ class ParseAPI {
             
             if let _ = postingError {
                 
-                completionHandler(success: false, errorString: "Connectivity error: try again")
+                completionHandler(success: false, errorString: ConstantStrings.sharedInstance.networkError)
                 
             } else {
             

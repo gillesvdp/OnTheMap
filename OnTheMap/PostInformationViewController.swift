@@ -93,7 +93,7 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
                 let uniqueKey = "1234567890" // Not actual key
                 let firstName = DataBuffer.sharedInstance.currentUserFirstName
                 let lastName = DataBuffer.sharedInstance.currentUserLastName
-                let mapString = places[0].locality! + ", " + places[0].country!
+                let mapString = places[0].country!                
                 let mediaURL = topViewTextFieldOutlet.text!
                 let latitude = places[0].location!.coordinate.latitude
                 let longitude = places[0].location!.coordinate.longitude
@@ -117,9 +117,9 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
                                 
                                 dispatch_async(dispatch_get_main_queue(), {
                                     if success {
-                                        self.performSegueWithIdentifier("backToNavigationView", sender: self)
+                                        self.performSegueWithIdentifier(ConstantStrings.sharedInstance.backToNavigationView, sender: self)
                                     } else {
-                                        self.displayAlertController("Connectivity error: try again")
+                                        self.displayAlertController(ConstantStrings.sharedInstance.networkError)
                                     }
                                 })
                         })
@@ -137,7 +137,7 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
-        performSegueWithIdentifier("backToNavigationView", sender: self)
+        performSegueWithIdentifier(ConstantStrings.sharedInstance.backToNavigationView, sender: self)
     }
     
     
@@ -187,8 +187,8 @@ class PostInformationViewController: UIViewController, UITextFieldDelegate {
     
     
     func displayAlertController(errorString: String) {
-        let errorAlert = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
-        errorAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        let errorAlert = UIAlertController(title: ConstantStrings.sharedInstance.alertControllerTitle, message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+        errorAlert.addAction(UIAlertAction(title: ConstantStrings.sharedInstance.alertControllerOk, style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(errorAlert, animated: true, completion: nil)
     }
     

@@ -58,7 +58,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         defreezeScreen(true)
         activityIndicatorOutlet.stopAnimating()
         if success {
-            performSegueWithIdentifier("loggedInSuccessfully", sender: nil)
+            performSegueWithIdentifier(ConstantStrings.sharedInstance.loggedInSuccessfully, sender: nil)
             
         } else {
             displayAlertController(errorString!)
@@ -66,13 +66,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signupButtonPressed(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(NSURL(string:"https://www.udacity.com/account/auth#!/signup")!)
+        UIApplication.sharedApplication().openURL(NSURL(string: ConstantStrings.sharedInstance.signUpUrl)!)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Instantiating the singleton
         _ = DataBuffer()
+        _ = ConstantStrings()
         
         // Disabling the 2 UITextFields that are being used as background only
         emailBackgroundOnlyOutlet.enabled = false
@@ -112,8 +113,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func displayAlertController(errorString: String) {
-        let errorAlert = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
-        errorAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        let errorAlert = UIAlertController(title: ConstantStrings.sharedInstance.alertControllerTitle, message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+        errorAlert.addAction(UIAlertAction(title: ConstantStrings.sharedInstance.alertControllerOk, style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(errorAlert, animated: true, completion: nil)
     }
     

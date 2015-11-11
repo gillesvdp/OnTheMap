@@ -18,14 +18,14 @@ class ParsingJSON {
                 
                 if let _ = parsedResult["status"] as? Int {
                     //The key "status" appears when there is an email/pwd problem
-                    completionHandler(success: false, errorString: "Incorrect email or password")
+                    completionHandler(success: false, errorString: ConstantStrings.sharedInstance.emailPwdError)
                     
                 } else {
                     DataBuffer.sharedInstance.currentUserKey = parsedResult["account"]!!["key"] as! String
                     completionHandler(success: true, errorString: nil)
                 }
             } catch _ as NSError {
-                completionHandler(success: false, errorString: "Try again")
+                completionHandler(success: false, errorString: ConstantStrings.sharedInstance.parsingError)
             }
     }
     
@@ -42,8 +42,7 @@ class ParsingJSON {
                 completionHandler(success: true, errorString: nil)
                 
             } catch _ as NSError {
-                
-                completionHandler(success: false, errorString: "Try again")
+                completionHandler(success: false, errorString: ConstantStrings.sharedInstance.parsingError)
             }
     }
     
@@ -79,13 +78,9 @@ class ParsingJSON {
                 completionHandler(success: true, errorString: nil)
                 
             } else {
-                completionHandler(success: false, errorString: "Try again or contact the support team")
+                completionHandler(success: false, errorString: ConstantStrings.sharedInstance.parsingError)
             }
-            
-            
-            
     }
-    
     
     func studentInfoToPost(data: [String: AnyObject],
         completionHandler: (success: Bool, dataInJSonFormat: AnyObject?, errorString: String?) -> Void) {
@@ -98,8 +93,6 @@ class ParsingJSON {
             } catch _ as NSError {
                 completionHandler(success: false, dataInJSonFormat: nil, errorString: "Try again")
             }
-            
-            
     }
     
 }
